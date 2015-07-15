@@ -1,0 +1,31 @@
+#
+#
+#
+dd {
+    fd {
+      field_name: "title"
+      indexed {
+        indexed: true
+        index_to: "default"
+      }
+      display: true
+      attr_indexed {
+        indexed: true
+        type: INT
+        size: 4
+      }
+    }
+    fd {
+      field_name: "desc"
+      indexed {
+        indexed: true
+        index_to: "default"
+      }
+      display: true
+      attr_indexed {
+        indexed: true
+        type: INT
+        size: 4
+      }
+    }
+}

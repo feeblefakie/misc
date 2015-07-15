@@ -1,0 +1,104 @@
+./join N EM off 1 1 t4.def 144 EQ
+parallelism: 1
+etime: 5072.61
+
+real	84m34.532s
+user	0m15.430s
+sys	0m31.579s
+./join N EM on 1400 1 t4.def 144 EQ
+parallelism: 1
+etime: 133.573
+
+real	3m23.956s
+user	0m51.988s
+sys	2m49.019s
+./join H EM off 1 1 t4.def 144 EQ
+parallelism: 1
+scanned 0
+etime: 5340.15
+
+real	89m1.749s
+user	2m8.118s
+sys	1m20.969s
+./join H LM off 1 1 t4.def 144 EQ
+parallelism: 1
+scanned 0
+Late materialization phase
+cnt: 0
+etime(lm-phase): 0
+etime: 5278.02
+
+real	87m59.877s
+user	1m49.032s
+sys	1m15.623s
+./join H EM on 1400 1 t4.def 144 EQ
+parallelism: 1
+scanned 0
+etime: 217.586
+
+real	4m49.391s
+user	8m52.611s
+sys	21m29.030s
+./join H LM on 1400 1 t4.def 144 EQ
+parallelism: 1
+scanned 0
+Late materialization phase
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 220.18
+
+real	4m51.463s
+user	8m43.225s
+sys	21m53.200s
+./join N EM off 1 1 t5.def 144 EQ
+parallelism: 1
+etime: 14576.3
+
+real	242m59.916s
+user	0m44.606s
+sys	1m26.264s
+./join N EM on 1400 1 t5.def 144 EQ
+parallelism: 1
+etime: 327.434
+
+real	7m50.156s
+user	1m49.052s
+sys	5m46.088s
+./join H EM off 1 1 t5.def 144 EQ
+parallelism: 1
+scanned 0
+etime: 14944.1
+
+real	249m7.433s
+user	4m15.401s
+sys	3m3.253s
+./join H LM off 1 1 t5.def 144 EQ
+parallelism: 1
+scanned 0
+Late materialization phase
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 14922.1
+
+real	248m45.803s
+user	3m57.829s
+sys	2m51.930s
+./join H EM on 1400 1 t5.def 144 EQ
+parallelism: 1
+scanned 0
+etime: 521.021
+
+real	11m4.775s
+user	18m10.575s
+sys	75m48.851s
+./join H LM on 1400 1 t5.def 144 EQ
+parallelism: 1
+scanned 0
+Late materialization phase
+cnt: 0
+etime(lm-phase): 1.19209e-06
+etime: 521.83
+
+real	11m5.039s
+user	18m12.025s
+sys	75m11.908s

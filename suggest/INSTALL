@@ -1,0 +1,8 @@
+# How to install
+
+$ pecl-gen kakasi.xml
+$ cd kakasi
+$ phpize
+$ ./configure --enable--kakasi
+$ make
+$ make install

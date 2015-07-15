@@ -1,0 +1,169 @@
+#!/bin/sh -x
+
+# daemon name
+daemon=corrector
+
+basedir=.
+datadir=.
+bindir=.
+
+# Default value, in seconds, afterwhich the script should timeout waiting
+# for server start. 
+# Value here is overriden by value in my.cnf. 
+# 0 means don't wait at all
+# Negative numbers mean to wait indefinitely
+service_startup_timeout=900
+
+# Set some defaults
+pid_file=$datadir/thrift-$daemon.pid
+
+#
+# Use LSB init script functions for printing messages, if possible
+#
+lsb_functions="/lib/lsb/init-functions"
+if test -f $lsb_functions ; then
+  . $lsb_functions
+else
+  log_success_msg()
+  {
+    echo " SUCCESS! $@"
+  }
+  log_failure_msg()
+  {
+    echo " ERROR! $@"
+  }
+fi
+
+mode=$1    # start or stop
+shift
+
+wait_for_pid () {
+  verb="$1"
+  manager_pid="$2"  # process ID of the program operating on the pid-file
+  i=0
+  avoid_race_condition="by checking again"
+  while test $i -ne $service_startup_timeout ; do
+
+    case "$verb" in
+      'created')
+        # wait for a PID-file to pop into existence.
+        test -s $pid_file && i='' && break
+        ;;
+      'removed')
+        # wait for this PID-file to disappear
+        test ! -s $pid_file && i='' && break
+        ;;
+      *)
+        echo "wait_for_pid () usage: wait_for_pid created|removed manager_pid"
+        exit 1
+        ;;
+    esac
+
+    # if manager isn't running, then pid-file will never be updated
+    if test -n "$manager_pid"; then
+      if kill -0 "$manager_pid" 2>/dev/null; then
+        :  # the manager still runs
+      else
+        # The manager may have exited between the last pid-file check and now.  
+        if test -n "$avoid_race_condition"; then
+          avoid_race_condition=""
+          continue  # Check again.
+        fi
+
+        # there's nothing that will affect the file.
+        log_failure_msg "Manager of pid-file quit without updating file."
+        return 1  # not waiting any more.
+      fi
+    fi
+
+    echo $echo_n ".$echo_c"
+    i=`expr $i + 1`
+    sleep 1
+  done
+
+  if test -z "$i" ; then
+    log_success_msg
+    return 0
+  else
+    log_failure_msg
+    return 1
+  fi
+}
+
+case "$mode" in
+  'start')
+    # Start daemon
+
+    # Safeguard (relative paths, core dumps..)
+    cd $basedir
+
+    echo $echo_n "Starting Thrift($daemon)"
+    if test -x $bindir/$daemon
+    then
+      # TODO $pid_file
+      $bindir/$daemon >/dev/null 2>&1 &
+      wait_for_pid created $!; return_value=$?
+
+      # Make lock for RedHat / SuSE
+      if test -w /var/lock/subsys
+      then
+        touch /var/lock/subsys/thrift-$daemon
+      fi
+      exit $return_value
+    else
+      log_failure_msg "Couldn't find server ($bindir/$daemon)"
+    fi
+    ;;
+
+  'stop')
+    # Stop daemon. We use a signal here to avoid having to know the
+    # root password.
+
+    # The RedHat / SuSE lock directory to remove
+    lock_dir=/var/lock/subsys/thrift-$daemon
+
+    if test -s "$pid_file"
+    then
+      manager_pid=`cat $pid_file`
+      
+      if (kill -0 $manager_pid 2>/dev/null)
+      then
+        echo $echo_n "Shutting down Thrift-$daemon"
+        kill $manager_pid
+        # manager should remove the pid_file when it exits, so wait for it.
+        wait_for_pid removed "$manager_pid"; return_value=$?
+      else
+        log_failure_msg "Thrift manager or server process #$manager_pid is not running!"
+        rm $pid_file
+      fi
+      
+      # delete lock for RedHat / SuSE
+      if test -f $lock_dir
+      then
+        rm -f $lock_dir
+      fi
+      exit $return_value
+    else
+      log_failure_msg "Thrift manager or server PID file could not be found!"
+    fi
+    ;;
+
+  'restart')
+    # Stop the service and regardless of whether it was
+    # running or not, start it again.
+    if $0 stop; then
+      $0 start
+    else
+      log_failure_msg "Failed to stop running server, so refusing to try to start."
+      exit 1
+    fi
+    ;;
+
+    *)
+      # usage
+      echo "Usage: $0  {start|stop|restart}"
+      exit 1
+    ;;
+esac
+
+exit 0

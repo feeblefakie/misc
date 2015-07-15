@@ -1,0 +1,7 @@
+# predicate-applied column (indexed column in outer table in NLJ)
+newsamples/new_sample1.101.col
+# JK (in outer table)
+newsamples/new_sample1.102.col
+# others
+newsamples/new_sample1.103.col
+newsamples/new_sample1.104.col

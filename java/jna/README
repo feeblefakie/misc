@@ -1,0 +1,11 @@
+# HelloWorld
+$ javac HelloWorld.java -cp jna.jar
+$ java -cp "./jna.jar:./" HelloWorld
+
+# Test
+$ gcc -fPIC test.c -shared -o libtest.so 
+$ javac Test.java -cp jna.jar
+$ export LD_LIBRARY_PATH=.
+$ java -cp "./jna.jar:./" Test
+
+

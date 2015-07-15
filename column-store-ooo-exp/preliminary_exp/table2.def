@@ -1,0 +1,8 @@
+# JK (indexed column in inner table in NLJ)
+newsamples/new_sample1.105.col
+# predicate-applied column
+newsamples/new_sample1.106.col
+# JK2 if multi-table join
+newsamples/new_sample1.107.col
+# others
+newsamples/new_sample1.108.col

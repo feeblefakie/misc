@@ -1,0 +1,169 @@
+
+
+HJ-EM
+HJ-EM : 1
+etime: 249.744
+HJ-EM : 10
+etime: 277.808
+HJ-EM : 100
+etime: 332.17
+HJ-EM : 1000
+etime: 807.762
+HJ-EM : 10000
+etime: 4135.59
+HJ-EM : 100000
+etime: 18065.7
+HJ-EM : 1000000
+etime: 2466.3
+HJ-EM : 10000000
+etime: 1359.36
+HJ-EM : 100000000
+etime: 2373.16
+
+
+HJ-LM
+HJ-LM : 1
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 249.612
+HJ-LM : 10
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 276.655
+HJ-LM : 100
+cnt: 0
+etime(lm-phase): 0
+etime: 326.495
+HJ-LM : 1000
+cnt: 0
+etime(lm-phase): 0
+etime: 781.82
+HJ-LM : 10000
+cnt: 0
+etime(lm-phase): 0
+etime: 4072.44
+HJ-LM : 100000
+
+
+HJ-LM
+HJ-LM : 1
+cnt: 0
+etime(lm-phase): 0
+etime: 246.116
+HJ-LM : 10
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 256.748
+HJ-LM : 100
+cnt: 0
+etime(lm-phase): 0
+etime: 262.026
+HJ-LM : 1000
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 286.717
+HJ-LM : 10000
+cnt: 0
+etime(lm-phase): 0
+etime: 393.209
+HJ-LM : 100000
+cnt: 0
+etime(lm-phase): 0
+etime: 942.297
+HJ-LM : 1000000
+cnt: 0
+etime(lm-phase): 0
+etime: 4152.57
+HJ-LM : 10000000
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 19493.2
+HJ-LM : 100000000
+cnt: 0
+etime(lm-phase): 0
+etime: 4235.03
+
+
+HJ-EM(OoO)
+HJ-EM(OoO) : 1
+etime: 247.342
+HJ-EM(OoO) : 10
+etime: 258.181
+HJ-EM(OoO) : 100
+etime: 263.899
+HJ-EM(OoO) : 1000
+etime: 291.386
+HJ-EM(OoO) : 10000
+etime: 382.971
+HJ-EM(OoO) : 100000
+etime: 749.122
+HJ-EM(OoO) : 1000000
+etime: 846.879
+HJ-EM(OoO) : 10000000
+etime: 2317.44
+
+
+HJ-LM(OoO)
+HJ-LM : 1
+cnt: 0
+etime(lm-phase): 0
+etime: 247.706
+HJ-LM : 10
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 256.937
+HJ-LM : 100
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 261.862
+HJ-LM : 1000
+cnt: 0
+etime(lm-phase): 0
+etime: 282.278
+HJ-LM : 10000
+cnt: 0
+etime(lm-phase): 0
+etime: 345.533
+HJ-LM : 100000
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 459.851
+HJ-LM : 1000000
+cnt: 0
+etime(lm-phase): 0
+etime: 506.829
+HJ-LM : 10000000
+cnt: 0
+etime(lm-phase): 0.100097
+etime: 1135.07
+
+
+HJ-EM(OoO)
+HJ-EM(OoO) : 100000000
+etime: 16288
+
+
+HJ-LM(OoO)
+HJ-LM : 100000000
+cnt: 0
+etime(lm-phase): 0
+etime: 925.22
+
+
+HJ-EM
+HJ-EM : 1000000000
+etime: 9238.32
+
+
+HJ-LM
+HJ-LM : 1000000000
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 2932.84
+
+
+HJ-LM(OoO)
+HJ-LM : 1000000000
+cnt: 0
+etime(lm-phase): 0.100083
+etime: 2935.09

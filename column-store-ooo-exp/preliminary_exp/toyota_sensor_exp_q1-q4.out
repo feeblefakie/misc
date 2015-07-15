@@ -1,0 +1,182 @@
+./join H EM off 1 1 q3_nocomp.def 50 EQ
+parallelism: 1
+scanned 0
+etime: 4640
+
+real	77m22.537s
+user	0m31.451s
+sys	0m19.820s
+./join H EM on 1400 1 q3_nocomp.def 50 EQ
+parallelism: 1
+scanned 0
+etime: 215.492
+
+real	3m43.560s
+user	4m4.064s
+sys	53m48.898s
+./join H EM off 1 1 q3_nocomp.def 128 EQ
+parallelism: 1
+scanned 0
+etime: 1030.94
+
+real	17m13.124s
+user	0m29.501s
+sys	0m7.798s
+./join H EM on 1400 1 q3_nocomp.def 128 EQ
+parallelism: 1
+scanned 0
+etime: 106.353
+
+real	1m54.498s
+user	2m5.112s
+sys	37m21.338s
+./join H EM off 1 1 q3_nocomp.def 255 EQ
+parallelism: 1
+scanned 0
+etime: 388.821
+
+real	6m31.301s
+user	0m36.520s
+sys	0m6.247s
+./join H EM on 1400 1 q3_nocomp.def 255 EQ
+parallelism: 1
+scanned 0
+etime: 413.324
+
+real	7m1.341s
+user	7m31.945s
+sys	176m35.376s
+./join H EM off 1 1 q3_rle.def 50 EQ
+parallelism: 1
+scanned 0
+etime: 7927.64
+
+real	132m11.465s
+user	4m36.046s
+sys	2m36.893s
+./join H EM on 1400 1 q3_rle.def 50 EQ
+parallelism: 1
+scanned 0
+etime: 477.289
+
+real	10m23.507s
+user	19m37.339s
+sys	118m0.018s
+./join H EM off 1 1 q3_rle.def 128 EQ
+parallelism: 1
+scanned 0
+etime: 2068.16
+
+real	34m32.046s
+user	2m22.118s
+sys	1m14.516s
+./join H EM on 1400 1 q3_rle.def 128 EQ
+parallelism: 1
+scanned 0
+etime: 256.532
+
+real	6m42.630s
+user	10m18.485s
+sys	61m53.147s
+./join H EM off 1 1 q3_rle.def 255 EQ
+parallelism: 1
+scanned 0
+etime: 1469.98
+
+real	24m33.763s
+user	7m59.027s
+sys	3m41.307s
+./join H EM on 1400 1 q3_rle.def 255 EQ
+parallelism: 1
+scanned 0
+etime: 617.056
+
+real	12m42.632s
+user	41m20.485s
+sys	213m9.291s
+./join H EM off 1 1 q4_nocomp.def 50 EQ
+parallelism: 1
+scanned 0
+etime: 32870
+
+real	547m52.745s
+user	0m48.539s
+sys	2m27.016s
+./join H EM on 1400 1 q4_nocomp.def 50 EQ
+parallelism: 1
+scanned 0
+etime: 1080.42
+
+real	18m9.470s
+user	17m57.093s
+sys	187m19.322s
+./join H EM off 1 1 q4_nocomp.def 128 EQ
+parallelism: 1
+./join.sh: line 24: 30512 強制終了            ./join H EM off 1 1 $pat.def $pred EQ
+
+real	1m51.024s
+user	0m0.158s
+sys	0m0.507s
+./join H EM on 1400 1 q4_nocomp.def 128 EQ
+parallelism: 1
+scanned 0
+etime: 998.737
+
+real	16m47.845s
+user	16m22.561s
+sys	170m55.366s
+./join H EM off 1 1 q4_nocomp.def 255 EQ
+parallelism: 1
+./join.sh: line 24:  3484 強制終了            ./join H EM off 1 1 $pat.def $pred EQ
+
+real	6m12.476s
+user	0m4.829s
+sys	0m6.475s
+./join H EM on 1400 1 q4_nocomp.def 255 EQ
+parallelism: 1
+scanned 0
+etime: 11096.5
+
+real	185m4.354s
+user	202m35.131s
+sys	4915m57.160s
+./join H EM off 1 1 q4_rle.def 50 EQ
+parallelism: 1
+scanned 0
+etime: 21132.7
+
+real	352m16.377s
+user	24m29.070s
+sys	11m33.387s
+./join H EM on 1400 1 q4_rle.def 50 EQ
+parallelism: 1
+scanned 0
+etime: 1373.52
+
+real	25m20.761s
+user	70m58.361s
+sys	481m25.580s
+./join H EM off 1 1 q4_rle.def 128 EQ
+parallelism: 1
+./join.sh: line 24: 28951 強制終了            ./join H EM off 1 1 $pat.def $pred EQ
+
+real	10m11.579s
+user	0m35.612s
+sys	0m18.798s
+./join H EM on 1400 1 q4_rle.def 128 EQ
+parallelism: 1
+scanned 0
+etime: 1332.61
+
+real	24m40.086s
+user	68m32.278s
+sys	459m21.305s
+./join H EM off 1 1 q4_rle.def 255 EQ
+parallelism: 1
+./join.sh: line 24:  5175 強制終了            ./join H EM off 1 1 $pat.def $pred EQ
+
+real	12m7.502s
+user	5m54.286s
+sys	2m56.978s
+./join H EM on 1400 1 q4_rle.def 255 EQ
+parallelism: 1

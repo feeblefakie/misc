@@ -1,0 +1,8 @@
+# steering wheel angle
+data/nocomp100/wheelangle.col
+# brake pedal position
+data/nocomp100/brake.col
+# time
+data/nocomp100/time.col
+# current speed
+data/nocomp100/speed.col

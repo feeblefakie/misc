@@ -1,0 +1,191 @@
+
+
+HJ-EM
+HJ-EM : 1
+etime: 243.218
+HJ-EM : 100
+etime: 323.653
+HJ-EM : 10000
+etime: 4123.48
+HJ-EM : 1000000
+etime: 2473.23
+
+
+HJ-LM
+HJ-LM : 1
+cnt: 0
+etime(lm-phase): 0
+etime: 249.824
+HJ-LM : 100
+cnt: 0
+etime(lm-phase): 0
+etime: 327.519
+HJ-LM : 10000
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 4073.71
+HJ-LM : 1000000
+cnt: 0
+etime(lm-phase): 0
+etime: 4035.94
+
+
+HJ-EM(OoO)
+HJ-EM(OoO) : 1
+etime: 241.843
+HJ-EM(OoO) : 100
+etime: 270.249
+HJ-EM(OoO) : 10000
+etime: 448.321
+HJ-EM(OoO) : 1000000
+etime: 819.999
+
+
+HJ-LM(OoO)
+HJ-LM : 1
+cnt: 0
+etime(lm-phase): 0
+etime: 241.503
+HJ-LM : 100
+cnt: 0
+etime(lm-phase): 0
+etime: 269.526
+HJ-LM : 10000
+cnt: 0
+etime(lm-phase): 0.100085
+etime: 448.532
+HJ-LM : 1000000
+cnt: 0
+etime(lm-phase): 0.1001
+etime: 770.097
+
+
+HJ-EM
+HJ-EM : 10
+etime: 269.986
+HJ-EM : 1000
+etime: 796.706
+HJ-EM : 100000
+etime: 18074.2
+HJ-EM : 10000000
+etime: 1427.2
+
+
+HJ-LM
+HJ-LM : 10
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 276.818
+HJ-LM : 1000
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 783.197
+HJ-LM : 100000
+./q.sh: line 16: 24727 強制終了            ./join H LM off 1 3 table3.def $pred LT table2.def NULL LT table1.def NULL LT
+HJ-LM : 10000000
+./q.sh: line 16: 24965 強制終了            ./join H LM off 1 3 table3.def $pred LT table2.def NULL LT table1.def NULL LT
+
+
+HJ-EM(OoO)
+HJ-EM(OoO) : 10
+etime: 264.978
+HJ-EM(OoO) : 1000
+etime: 293.405
+HJ-EM(OoO) : 100000
+etime: 1067.43
+HJ-EM(OoO) : 10000000
+etime: 2146.01
+
+
+HJ-LM(OoO)
+HJ-LM : 10
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 264.516
+HJ-LM : 1000
+cnt: 0
+etime(lm-phase): 0
+etime: 293.079
+HJ-LM : 100000
+cnt: 0
+etime(lm-phase): 0.100069
+etime: 1112.69
+HJ-LM : 10000000
+cnt: 0
+etime(lm-phase): 0.200219
+etime: 2109.15
+
+
+HJ-LM
+HJ-LM : 1
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 242.108
+HJ-LM : 10
+cnt: 0
+etime(lm-phase): 0
+etime: 269.549
+HJ-LM : 100
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 322.744
+HJ-LM : 1000
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 791.316
+HJ-LM : 10000
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 4199.71
+HJ-LM : 100000
+cnt: 0
+etime(lm-phase): 0
+etime: 16940.5
+HJ-LM : 1000000
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 3930.18
+HJ-LM : 10000000
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 2208.63
+
+
+HJ-EM
+HJ-EM : 100000000
+etime: 2467.55
+
+
+HJ-LM
+HJ-LM : 100000000
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 12084.5
+
+
+HJ-EM
+HJ-EM : 1000000000
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+./q.sh: line 7: 32253 アボートしました(コアダンプ) ./join H EM off 1 3 table1.def $pred LT table2.def NULL LT table3.def NULL LT
+
+
+HJ-LM
+HJ-LM : 100000000
+cnt: 0
+etime(lm-phase): 1.19209e-06
+etime: 12055.7
+HJ-LM : 1000000000
+./q.sh: line 18:   668 強制終了            ./join H LM off 1 3 table1.def $pred LT table2.def NULL LT table3.def NULL LT
+
+
+HJ-LM(OoO)
+HJ-LM : 100000000
+cnt: 0
+etime(lm-phase): 0.200326
+etime: 16168.5
+
+
+NLJ-EM(OoO)
+NLJ-EM(OoO) : 1000
+etime: 3.48116

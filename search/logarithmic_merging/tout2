@@ -1,0 +1,38 @@
+------------------------------------
+[k-way merge time]
+
+3-way merge: 8.92294 (s)
+3-way merge: 9.95446 (s)
+3-way merge: 9.66649 (s)
+3-way merge: 9.7802 (s)
+3-way merge: 9.03407 (s)
+3-way merge: 9.27915 (s)
+3-way merge: 9.75074 (s)
+3-way merge: 9.86329 (s)
+--
+sum: 76.25134 (s)
+
+4-way merge: 16.3648 (s)
+4-way merge: 16.7213 (s)
+4-way merge: 16.4277 (s)
+4-way merge: 14.4415 (s)
+-- 
+sum: 63.9553 (s)
+
+5-way merge: 23.0409 (s)
+5-way merge: 21.426 (s)
+--
+sum: 44.4669 (s)
+
+6-way merge: 48.1164 (s)
+
+7-way merge: 91.991 (s)
+
+------------------------------------
+total merge time: 324.78094
+
+------------------------------------
+total construction time: 1844.70 (s)
+
+merge time / total construction time = 0.17606165772212283840
+

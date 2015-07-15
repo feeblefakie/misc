@@ -1,0 +1,35 @@
+#
+# server configuration file
+#
+cluster {
+    server {
+        host: "localhost"
+        searcher {
+            port: 4106
+            default_threads: 10
+            max_threads: 30
+        }
+        indexer {
+            port: 4107
+        }
+    }
+    server {
+        host: "localhost"
+        searcher {
+            port: 4106
+            default_threads: 10
+            max_threads: 30
+        }
+        indexer {
+            port: 4107
+        }
+    }
+}
+
+search_dispatcher {
+    host: "localhost"
+    port: 5555
+    cluster: 0
+    default_threads: 10
+    max_threads: 30
+}

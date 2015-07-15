@@ -1,0 +1,50 @@
+はてなキーワードを高速に付与するプログラム
+
+Copyright (C) Taku Kudo <taku@chasen.org>
+
+1. 概要
+
+   はてなキーワードを任意のテキストに高速に付与するプログラムです。
+   TRIE というデータ構造を用いることで、正規表現のものより
+   1000倍以上高速に動作します。
+
+  - はてなダイアリーキーワード自動リンクAPI 
+    http://d.hatena.ne.jp/hatenadiary/20040205
+
+  - はてなキーワードを高速に付与
+    http://chasen.org/~taku/blog/archives/2005/09/post_812.html]
+
+2. 使い方
+
+  1) コンパイル
+
+    % make
+
+  2) http://d.hatena.ne.jp/hatenadiary/20040205
+     から keywordlist をダウンロードします。
+
+   % wget http://d.hatena.ne.jp/images/keyword/keywordlist
+
+  3) 正規表現を通常のキーワードリストに変換します
+
+   % perl extractkeyword.pl < keywordlist > keywordlist.sort
+
+  4) Double-Array のインデックスを作成します
+
+   % ./mkdarts keywrodlist.sort keywordlist.da
+
+  5) 実際に動作確認
+
+    タグを付与するテキストを標準入力から流し込みます
+
+   % ./hatenakeyword < 任意のテキスト
+
+   例 
+   % ./hatenakeyword < README
+   
+3. 既知の問題
+
+  - 大文字小文字が区別されます。区別しないようにするには, darts そのものを
+    修正する必要があります。
+  - 正規表現からキーワードリストの変換が ad-hoc で漏れがありそうです。
+  - &#44032; のように entity を参照されているものは無視されます。

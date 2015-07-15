@@ -1,0 +1,47 @@
+pipelining merge - level: 2
+3-way merge: 8.92294 (s)
+
+pipelining merge - level: 3
+4-way merge: 16.3648 (s)
+
+pipelining merge - level: 2
+3-way merge: 9.95446 (s)
+
+pipelining merge - level: 4
+5-way merge: 23.0409 (s)
+
+pipelining merge - level: 2
+3-way merge: 9.66649 (s)
+
+pipelining merge - level: 3
+4-way merge: 16.7213 (s)
+
+pipelining merge - level: 2
+3-way merge: 9.7802 (s)
+
+pipelining merge - level: 5
+6-way merge: 48.1164 (s)
+
+pipelining merge - level: 2
+3-way merge: 9.03407 (s)
+
+pipelining merge - level: 3
+4-way merge: 16.4277 (s)
+
+pipelining merge - level: 2
+3-way merge: 9.27915 (s)
+
+pipelining merge - level: 4
+5-way merge: 21.426 (s)
+
+pipelining merge - level: 2
+3-way merge: 9.75074 (s)
+
+pipelining merge - level: 3
+4-way merge: 14.4415 (s)
+
+pipelining merge - level: 2
+3-way merge: 9.86329 (s)
+
+pipelining merge - level: 6
+7-way merge: 91.991 (s)

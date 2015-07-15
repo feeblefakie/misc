@@ -1,0 +1,65 @@
+
+
+HJ-EM
+HJ-EM : 100
+etime: 19.6932
+HJ-EM : 10000
+etime: 22.2751
+HJ-EM : 100000
+etime: 23.7079
+
+
+HJ-EM(OoO)
+HJ-EM(OoO) : 100
+etime: 19.9543
+HJ-EM(OoO) : 10000
+etime: 23.8132
+HJ-EM(OoO) : 100000
+etime: 42.309
+
+
+HJ-LM
+HJ-LM : 100
+cnt: 10000
+etime(lm-phase): 5.60658
+etime: 24.5456
+HJ-LM : 10000
+cnt: 999224
+etime(lm-phase): 17.7671
+etime: 38.7482
+HJ-LM : 100000
+cnt: 9879755
+etime(lm-phase): 13.9591
+etime: 37.7825
+
+
+HJ-LM(OoO)
+HJ-LM : 100
+cnt: 10000
+etime(lm-phase): 0.201606
+etime: 19.7355
+HJ-LM : 10000
+cnt: 999224
+etime(lm-phase): 1.83724
+etime: 23.6026
+HJ-LM : 100000
+cnt: 9879755
+etime(lm-phase): 15.4897
+etime: 38.0332
+
+
+NLJ-EM(OoO)
+NLJ-EM : 100
+etime: 0.92824
+NLJ-EM : 10000
+etime: 32.2351
+NLJ-EM : 100000
+etime: 315.175
+
+
+NLJ-LM(OoO)
+NLJ-LM : 100
+etime: 0.924598
+NLJ-LM : 10000
+etime: 31.5829
+NLJ-LM : 100000

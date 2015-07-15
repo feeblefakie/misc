@@ -1,0 +1,28 @@
+#
+# sample document definition
+#
+
+field {
+  name: "title"
+  index {
+    indexing: true
+    index_to: "default"
+  }
+  display: true
+}
+field {
+  name: "desc"
+  index {
+    indexing: true
+    index_to: "default"
+  }
+  display: true
+}
+field {
+  name: "date"
+  attr_index {
+    indexing: true
+    type: STRING
+    size: 14
+  }
+}

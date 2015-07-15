@@ -1,0 +1,138 @@
+
+
+HJ-EM
+HJ-EM : 1
+etime: 17.2435
+HJ-EM : 10
+etime: 19.528
+HJ-EM : 100
+etime: 27.2389
+HJ-EM : 10000
+etime: 419.372
+
+
+HJ-LM
+HJ-LM : 1
+cnt: 100
+etime(lm-phase): 0.70068
+etime: 17.2298
+HJ-LM : 10
+cnt: 1000
+etime(lm-phase): 4.60465
+etime: 22.6268
+HJ-LM : 100
+cnt: 10000
+etime(lm-phase): 40.6407
+etime: 58.8075
+HJ-LM : 10000
+cnt: 1000000
+etime(lm-phase): 724.82
+etime: 756.18
+
+
+HJ-EM(OoO)
+HJ-EM(OoO) : 1
+etime: 16.7793
+HJ-EM(OoO) : 10
+etime: 18.2084
+HJ-EM(OoO) : 100
+etime: 19.0319
+HJ-EM(OoO) : 10000
+etime: 62.4802
+
+
+HJ-LM(OoO)
+HJ-LM : 1
+cnt: 100
+etime(lm-phase): 0.100108
+etime: 17.4672
+HJ-LM : 10
+cnt: 1000
+etime(lm-phase): 0.100242
+etime: 18.8864
+HJ-LM : 100
+cnt: 10000
+etime(lm-phase): 0.301454
+etime: 19.4436
+HJ-LM : 10000
+cnt: 1000000
+etime(lm-phase): 20.229
+etime: 51.752
+
+
+NLJ-EM(OoO)
+NLJ-EM(OoO) : 1
+etime: 0.74091
+NLJ-EM(OoO) : 10
+etime: 0.603225
+NLJ-EM(OoO) : 100
+etime: 0.838673
+NLJ-EM(OoO) : 10000
+etime: 34.0733
+
+
+NLJ-LM(OoO)
+NLJ-LM(OoO) : 1
+etime: 0.740126
+NLJ-LM(OoO) : 10
+etime: 0.622094
+NLJ-LM(OoO) : 100
+etime: 0.842216
+NLJ-LM(OoO) : 10000
+etime: 33.3733
+
+
+NLJ-EM
+NLJ-EM : 1
+etime: 1.24797
+NLJ-EM : 10
+etime: 5.11462
+NLJ-EM : 100
+etime: 47.8634
+NLJ-EM : 1000
+etime: 526.987
+
+
+NLJ-LM
+NLJ-LM : 1
+etime: 1.23961
+NLJ-LM : 10
+etime: 5.00852
+NLJ-LM : 100
+etime: 47.864
+NLJ-LM : 1000
+etime: 529.338
+
+
+HJ-EM
+HJ-EM : 100000
+etime: 1247.93
+
+
+HJ-LM
+HJ-LM : 100000
+cnt: 10000000
+etime(lm-phase): 748.857
+etime: 795.556
+
+
+HJ-EM(OoO)
+HJ-EM(OoO) : 100000
+etime: 337.258
+
+
+HJ-LM(OoO)
+HJ-LM : 100000
+cnt: 10000000
+etime(lm-phase): 158.339
+etime: 205.675
+
+
+NLJ-EM(OoO)
+NLJ-EM(OoO) : 100000
+etime: 333.223
+
+
+NLJ-LM(OoO)
+NLJ-LM(OoO) : 100000
+etime: 335.897

@@ -1,0 +1,330 @@
+
+
+HJ-EM
+HJ-EM : 100
+etime: 26.0162
+HJ-EM : 10000
+etime: 324.388
+HJ-EM : 100000
+etime: 1585.52
+HJ-EM : 1000000
+etime: 516.72
+
+
+HJ-EM(OoO)
+HJ-EM(OoO) : 100
+etime: 19.1489
+HJ-EM(OoO) : 10000
+etime: 56.1123
+HJ-EM(OoO) : 100000
+etime: 364.276
+HJ-EM(OoO) : 1000000
+etime: 473.92
+
+
+HJ-LM
+HJ-LM : 100
+cnt: 10000
+etime(lm-phase): 41.539
+etime: 60.1903
+HJ-LM : 10000
+cnt: 1000000
+etime(lm-phase): 720.121
+etime: 749.864
+HJ-LM : 100000
+cnt: 10000000
+etime(lm-phase): 692.787
+etime: 753.882
+HJ-LM : 1000000
+cnt: 100000000
+etime(lm-phase): 193.285
+etime: 235.075
+
+
+HJ-LM(OoO)
+HJ-LM : 100
+cnt: 10000
+etime(lm-phase): 0.301562
+etime: 19.4848
+HJ-LM : 10000
+cnt: 1000000
+etime(lm-phase): 19.7775
+etime: 49.5527
+HJ-LM : 100000
+cnt: 10000000
+etime(lm-phase): 154.997
+etime: 216.251
+HJ-LM : 1000000
+cnt: 100000000
+etime(lm-phase): 276.599
+etime: 318.859
+
+
+NLJ-EM(OoO)
+NLJ-EM(OoO) : 100
+etime: 0.936491
+NLJ-EM(OoO) : 10000
+etime: 31.9765
+NLJ-EM(OoO) : 100000
+etime: 314.395
+
+
+NLJ-LM(OoO)
+NLJ-LM(OoO) : 100
+etime: 0.929385
+NLJ-LM(OoO) : 10000
+etime: 31.3635
+NLJ-LM(OoO) : 100000
+etime: 315.634
+
+
+HJ-EM
+HJ-EM : 1
+etime: 18.4577
+HJ-EM : 10
+etime: 20.3079
+HJ-EM : 10000000
+etime: 308.898
+
+
+HJ-EM(OoO)
+HJ-EM(OoO) : 1
+etime: 17.4985
+HJ-EM(OoO) : 10
+etime: 18.8101
+HJ-EM(OoO) : 10000000
+etime: 2175.93
+
+
+HJ-LM
+HJ-LM : 1
+cnt: 100
+etime(lm-phase): 0.600632
+etime: 18.4289
+HJ-LM : 10
+cnt: 1000
+etime(lm-phase): 4.60421
+etime: 23.3339
+HJ-LM : 10000000
+
+
+HJ-LM(OoO)
+HJ-LM : 1
+cnt: 100
+etime(lm-phase): 0.100135
+etime: 19.0468
+HJ-LM : 10
+cnt: 1000
+etime(lm-phase): 0.100218
+etime: 18.8901
+
+
+NLJ-EM(OoO)
+NLJ-EM(OoO) : 1
+etime: 0.717567
+NLJ-EM(OoO) : 10
+etime: 0.703196
+
+
+NLJ-LM(OoO)
+NLJ-LM(OoO) : 1
+etime: 0.206664
+NLJ-LM(OoO) : 10
+etime: 0.205759
+
+
+NLJ-EM
+NLJ-EM : 1
+etime: 0.201713
+NLJ-EM : 10
+etime: 0.501756
+NLJ-EM : 100
+etime: 47.5573
+
+
+NLJ-LM
+NLJ-LM : 1
+etime: 1.21701
+NLJ-LM : 10
+etime: 5.00622
+NLJ-LM : 100
+etime: 47.9642
+
+
+NLJ-EM
+NLJ-EM : 1000
+etime: 528.39
+
+
+NLJ-LM
+NLJ-LM : 1000
+etime: 527.636
+
+
+HJ-EM
+HJ-EM : 10000
+etime: 418.745
+HJ-EM : 100000
+etime: 1253.49
+
+
+HJ-LM
+HJ-LM : 10000
+cnt: 1000000
+etime(lm-phase): 719.632
+etime: 751.903
+HJ-LM : 100000
+cnt: 10000000
+etime(lm-phase): 714.239
+etime: 760.679
+
+
+HJ-EM
+HJ-EM : 100000000
+etime: 670.124
+HJ-EM : 10000000
+etime: 305.096
+
+
+HJ-LM
+HJ-LM : 100000000
+
+
+HJ-LM
+HJ-LM : 10000000
+./q.sh: line 17: 15349 強制終了            ./join H LM off 1 3 table1.def $pred LT table2.def NULL LE table3.def NULL LE
+
+
+HJ-LM
+HJ-LM : 1000
+cnt: 100000
+etime(lm-phase): 268.774
+etime: 290.104
+HJ-LM : 10000
+cnt: 1000000
+etime(lm-phase): 726.692
+etime: 759.023
+HJ-LM : 100000
+
+
+HJ-LM(OoO)
+HJ-LM : 1000
+cnt: 100000
+etime(lm-phase): 2.21512
+etime: 23.0946
+
+
+HJ-LM
+HJ-LM : 1000000
+cnt: 100000000
+etime(lm-phase): 189.234
+etime: 227.345
+
+
+HJ-LM
+HJ-LM : 10000000
+./q.sh: line 6:  8253 強制終了            ./join H LM off 1 3 table1.def $pred LT table2.def $pred2 LT table3.def NULL LT
+
+
+HJ-LM
+HJ-LM : 10000000
+./q.sh: line 6:  8453 強制終了            ./join H LM off 1 3 table1.def $pred LT table2.def $pred2 LT table3.def NULL LT
+
+
+HJ-LM
+HJ-LM : 10000000
+./q.sh: line 6:  8610 強制終了            ./join H LM off 1 3 table1.def $pred LT table2.def $pred2 LT table3.def NULL LT
+
+
+HJ-LM
+HJ-LM : 10000000
+cnt: 0
+etime(lm-phase): 0
+etime: 164.707
+
+
+HJ-LM
+HJ-LM : 10000000
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 163.277
+
+
+HJ-LM
+HJ-LM : 100000000
+cnt: 0
+etime(lm-phase): 1.19209e-06
+etime: 1421.77
+
+
+HJ-LM(OoO)
+HJ-LM : 10000000
+cnt: 0
+etime(lm-phase): 0.200296
+etime: 2156.06
+
+
+HJ-LM
+HJ-LM : 10000000
+
+
+HJ-LM
+HJ-LM : 1000000
+cnt: 0
+etime(lm-phase): 0
+etime: 62.2869
+
+
+HJ-LM
+HJ-LM : 1000000
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 61.6938
+
+
+HJ-LM
+HJ-LM : 1000000
+cnt: 0
+etime(lm-phase): 0
+etime: 63.1385
+
+
+HJ-LM
+HJ-LM : 1000000
+cnt: 0
+etime(lm-phase): 0
+etime: 63.4148
+
+
+HJ-LM
+HJ-LM : 100
+cnt: 0
+etime(lm-phase): 0
+etime: 26.2634
+HJ-LM : 1000
+cnt: 0
+etime(lm-phase): 0
+etime: 59.6868
+HJ-LM : 10000
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 321.427
+HJ-LM : 100000
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 1621.43
+
+
+HJ-LM
+HJ-LM : 1000000
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 831.301
+HJ-LM : 10000000
+cnt: 0
+etime(lm-phase): 9.53674e-07
+etime: 329.122
+HJ-LM : 100000000
+cnt: 0
+etime(lm-phase): 0
+etime: 1258.97

@@ -1,0 +1,102 @@
+2-way merge (I0 and Z0): 5.36367 (s)
+Z0 size 115412
+I0 size 106752
+I1 size 145836
+
+3-way merge: 9.04241 (s)
+2-way merge (I0 and Z0): 5.93173 (s)
+Z0 size 103484
+I0 size 114622
+I1 size 164176
+I2 size 231344
+
+4-way merge: 16.1994 (s)
+2-way merge (I0 and Z0): 5.70804 (s)
+Z0 size 107190
+I0 size 108736
+I1 size 161162
+
+3-way merge: 10.0237 (s)
+2-way merge (I0 and Z0): 5.75222 (s)
+Z0 size 116832
+I0 size 112760
+I1 size 160519
+I2 size 241977
+I3 size 353849
+
+5-way merge: 25.7861 (s)
+2-way merge (I0 and Z0): 5.62214 (s)
+Z0 size 109747
+I0 size 113088
+I1 size 153785
+
+3-way merge: 9.94014 (s)
+2-way merge (I0 and Z0): 5.80858 (s)
+Z0 size 111211
+I0 size 108736
+I1 size 159859
+I2 size 238752
+4-way merge: 11.9629 (s)
+2-way merge (I0 and Z0): 6.05426 (s)
+Z0 size 108513
+I0 size 105435
+I1 size 163963
+3-way merge: 7.62788 (s)
+2-way merge (I0 and Z0): 4.37278 (s)
+Z0 size 106841
+I0 size 104743
+I1 size 157063
+I2 size 244406
+I3 size 364091
+I4 size 548802
+6-way merge: 46.652 (s)
+2-way merge (I0 and Z0): 5.40799 (s)
+Z0 size 109047
+I0 size 108638
+I1 size 149772
+3-way merge: 9.83459 (s)
+2-way merge (I0 and Z0): 5.47096 (s)
+Z0 size 100874
+I0 size 113998
+I1 size 161671
+I2 size 234325
+4-way merge: 16.4847 (s)
+2-way merge (I0 and Z0): 6.09724 (s)
+Z0 size 109206
+I0 size 110985
+I1 size 165687
+3-way merge: 9.04799 (s)
+2-way merge (I0 and Z0): 4.45552 (s)
+Z0 size 93457
+I0 size 103839
+I1 size 161380
+I2 size 248731
+I3 size 363017
+5-way merge: 22.1188 (s)
+2-way merge (I0 and Z0): 5.67476 (s)
+Z0 size 110502
+I0 size 107697
+I1 size 153679
+3-way merge: 9.84002 (s)
+2-way merge (I0 and Z0): 5.97385 (s)
+Z0 size 110546
+I0 size 104994
+I1 size 163314
+I2 size 232635
+4-way merge: 13.5225 (s)
+2-way merge (I0 and Z0): 5.86878 (s)
+Z0 size 111730
+I0 size 112741
+I1 size 160655
+3-way merge: 9.98149 (s)
+2-way merge (I0 and Z0): 5.57061 (s)
+pipelining merge - level: 6
+Z0 size 107981
+I0 size 114007
+I1 size 157124
+I2 size 247240
+I3 size 356194
+I4 size 551360
+I5 size 854558
+7-way merge: 89.6746 (s)
+2-way merge (I0 and Z0): 5.72716 (s)

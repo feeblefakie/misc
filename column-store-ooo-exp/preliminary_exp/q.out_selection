@@ -1,0 +1,139 @@
+
+
+HJ-EM
+HJ-EM : 1
+etime: 37.3457
+HJ-EM : 10
+etime: 41.8951
+HJ-EM : 100
+etime: 91.1486
+HJ-EM : 1000
+etime: 540.728
+HJ-EM : 10000
+etime: 3692.37
+HJ-EM : 1000000
+etime: 1963.82
+HJ-EM : 10000000
+etime: 803.025
+HJ-EM : 100000000
+etime: 1582.75
+
+
+HJ-EM(OoO)
+HJ-EM(OoO) : 1
+etime: 36.32
+HJ-EM(OoO) : 10
+etime: 36.4701
+HJ-EM(OoO) : 100
+etime: 38.4148
+HJ-EM(OoO) : 1000
+etime: 50.4377
+HJ-EM(OoO) : 10000
+etime: 109.836
+HJ-EM(OoO) : 100000
+etime: 405.394
+HJ-EM(OoO) : 1000000
+etime: 358.955
+HJ-EM(OoO) : 10000000
+etime: 1581.92
+
+
+NLJ-EM(OoO)
+NLJ-EM(OoO) : 1
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  vector::_M_range_check
+./q.sh: line 31: 13186 アボートしました(コアダンプ) ./join N EM on 1000 1 table3.def $pred LT
+NLJ-EM(OoO) : 10
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  vector::_M_range_check
+./q.sh: line 31: 14282 アボートしました(コアダンプ) ./join N EM on 1000 1 table3.def $pred LT
+NLJ-EM(OoO) : 100
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  vector::_M_range_check
+./q.sh: line 31: 15374 アボートしました(コアダンプ) ./join N EM on 1000 1 table3.def $pred LT
+NLJ-EM(OoO) : 1000
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  vector::_M_range_check
+./q.sh: line 31: 16464 アボートしました(コアダンプ) ./join N EM on 1000 1 table3.def $pred LT
+NLJ-EM(OoO) : 10000
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  vector::_M_range_check
+./q.sh: line 31: 17555 アボートしました(コアダンプ) ./join N EM on 1000 1 table3.def $pred LT
+NLJ-EM(OoO) : 100000
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  vector::_M_range_check
+./q.sh: line 31: 18646 アボートしました(コアダンプ) ./join N EM on 1000 1 table3.def $pred LT
+
+
+NLJ-EM
+NLJ-EM : 1
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  vector::_M_range_check
+./q.sh: line 43: 19737 アボートしました(コアダンプ) ./join N EM off 1 1 table3.def $pred LT
+NLJ-EM : 10
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  vector::_M_range_check
+./q.sh: line 43: 19753 アボートしました(コアダンプ) ./join N EM off 1 1 table3.def $pred LT
+NLJ-EM : 100
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  vector::_M_range_check
+./q.sh: line 43: 19767 アボートしました(コアダンプ) ./join N EM off 1 1 table3.def $pred LT
+NLJ-EM : 1000
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  vector::_M_range_check
+./q.sh: line 43: 19781 アボートしました(コアダンプ) ./join N EM off 1 1 table3.def $pred LT
+
+
+HJ-EM
+HJ-EM : 1
+etime: 37.965
+HJ-EM : 10
+etime: 41.7895
+HJ-EM : 100
+etime: 91.3698
+HJ-EM : 1000
+etime: 541.309
+HJ-EM : 10000
+
+
+NLJ-EM(OoO)
+NLJ-EM(OoO) : 1
+./q.sh: line 33: 20779 セグメンテーション違反です               (コアダンプ) ./join N EM on 1000 1 table3.def $pred LT
+
+
+NLJ-EM(OoO)
+NLJ-EM(OoO) : 1
+etime: 0.21651
+NLJ-EM(OoO) : 10
+etime: 0.604378
+NLJ-EM(OoO) : 100
+etime: 0.838879
+NLJ-EM(OoO) : 1000
+etime: 3.5566
+NLJ-EM(OoO) : 10000
+etime: 32.6606
+NLJ-EM(OoO) : 100000
+etime: 315.769
+
+
+NLJ-EM
+NLJ-EM : 1
+etime: 1.14116
+NLJ-EM : 10
+etime: 4.70622
+NLJ-EM : 100
+etime: 45.0543
+NLJ-EM : 1000
+etime: 494.477
+
+
+HJ-EM
+HJ-EM : 100000
+etime: 15309.2
+HJ-EM : 1000000000
+etime: 7706.91
+
+
+HJ-EM(OoO)
+HJ-EM(OoO) : 100000000
+etime: 15248

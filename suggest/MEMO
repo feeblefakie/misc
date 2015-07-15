@@ -1,0 +1,7 @@
+PHP extension
+
+./configureが生成したMakefileに以下を追加する必要あり
+
+KAKASI_SHARED_LIBADD =
+->
+KAKASI_SHARED_LIBADD = -Wl,-rpath,/usr/local/lib -L/usr/local/lib -lkakasi

@@ -1,0 +1,30 @@
+<project name="hadooode-index-test" default="compile" basedir=".">
+    <target name="compile">
+        <javac srcdir="." destdir="./classes" classpath="/usr/local/BerkeleyDB.5.2/lib/db.jar" debug="on" includeantruntime="false">
+            <patternset>
+                <include name="GetKeyToFileRange.java" />
+                <include name="GetKeyToFileRangeWithPred.java" />
+                <include name="PutKeyToFileRange.java" />
+                <include name="CreateFileRange.java" />
+                <include name="FileRange.java" />
+                <include name="PredicateInfo.java" />
+                <include name="Utilities.java" />
+            </patternset>
+            <compilerarg value="-Xlint:unchecked" />
+        </javac>
+    </target>
+
+    <target name="create_p_retailprice" depends="compile">
+        <exec dir="." executable="java">
+            <arg line="-cp '/usr/local/BerkeleyDB.5.2/lib/db.jar:classes' org.apache.hadoop.hive.ql.io.PutKeyToFileRange part.tidx part.p_retailprice.idx double" />
+        </exec>
+    </target>
+
+    <target name="lookup_p_retailprice" depends="compile">
+        <exec dir="." executable="java">
+            <arg line="-cp '/usr/local/BerkeleyDB.5.2/lib/db.jar:classes' org.apache.hadoop.hive.ql.io.GetKeyToFileRangeWithPred '=(p_retailprice:double,1000)' part.p_retailprice.idx double" />
+        </exec>
+    </target>
+
+
+</project>

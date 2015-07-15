@@ -1,0 +1,54 @@
+Multinomial/Complement NaiveBayes のテストプログラム
+
+スパム判定, 文書分類などで用いられるMultinomial/Complement NaiveBayes のプロトタイプです.
+(Complement NaiveBayesはMultinomial NaiveBayesの弱点を克服したとされる比較的新しいNaiveBayesの方法です.
+詳しくは, http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.2.322)
+
+# プログラム
+
+- nb.pl - 学習プログラム
+- cnb-test.pl - カテゴリ判定 for Complement NaiveBayes
+- mnb-test.pl - カテゴリ判定 for Multinomial NaiveBayes
+
+# 使い方 (20 newsgroupsを例に)
+
+* 学習フェーズ
+
+    # multinomial
+    % ./nb.pl 20news-bydate-train m
+
+    # complement
+    % ./nb.pl 20news-bydate-test c
+
+* テストフェーズ
+
+    # multinomial
+    # check the specific test
+    % ./mnb-test.pl 20news-bydate-test/alt.atheism/53325
+    # check the all tests
+    % ./mnb-test.pl 20news-bydate-test
+
+    # complement
+    # check the specific test
+    % ./cnb-test.pl 20news-bydate-test/alt.atheism/53325
+    # check the all tests
+    % ./cnb-test.pl 20news-bydate-test
+
+# 現在の精度 (20 newsgroups)
+
+* Multinomial NaiveBayes
+    - 正解率
+        correct rate: 0.782926181625066 (78%)
+        top3 rate: 0.920738183749336 (top3に正解が入っている確率が 92%)
+
+    - 全データ分類の実行時間 (テスト文書数: 7532)
+        - ./mnb-test.pl 20news-bydate-test  69.68s user 1.10s system 92% cpu 1:16.24 total
+
+* Complement NaiveBayes
+    - 正解率
+        correct rate: 0.84121083377589 (84%)
+        top3 rate: 0.951141795007966 (top3に正解が入っている確率が 95%)
+
+    - 全データ分類の実行時間 (テスト文書数: 7532)
+        - ./cnb-test.pl 20news-bydate-test  115.04s user 1.55s system 92% cpu 2:05.92 total
+

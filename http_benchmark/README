@@ -1,0 +1,93 @@
+bench: HTTP ベンチマークツール
+
+* 概要
+
+    HTTP(GET)でリクエストを受け付けるサービスのスループットやレスポンスタイム(レイテンシ)を測定するツールです. 
+    主に検索エンジン等の性能を測定するのに使えます.
+
+* 使い方
+
+    まずは何も引数を与えないと可能なオプション等が出てきます. 
+
+    % ./bench   
+    Usage: http_test [-p procs] [-c reqs/proc] [-i req_file] [-t resp_threshold] hostname
+
+    -p       the number of processes.
+    -c       the number of requests per process.
+    -i       request file.
+    -s       enable slow query.
+    -t       threshold for response time.
+    -h       request header configuration file.
+    -v       HTTP version (1.0 in default).
+
+    - 引数
+        - 必須
+            - hostname: ホスト名 (例: search.yahoo.co.jp)
+        - オプション
+            - -p: リクエストを同時に投げるプロセス数
+            - -c: プロセスごとのリクエスト数
+            - -i: リクエストのパスが入ったファイル名
+            - -s: スロークエリを有効にします
+            - -t: レイテンシの閾値 (秒) (これより大きい値はslow_queries.log ファイルに書き出されます.) 
+            - -h: リクエストヘッダ設定ファイル
+            - -v: HTTPのバージョン (デフォルトは1.0)
+
+* リクエストファイルのフォーマット
+
+    以下の様な1行1パスのファイルを用意する必要があります. 
+
+    (注) 各プロセスは別URLに対してリクエストを投げるため, 
+         プロセス数 * プロセスごとのリクエスト数 以上の行数を含んでいる必要があります. 
+
+    --------------------
+    /search?p=google
+    /search?p=yahoo
+    /search?p=baidu
+    /search?p=naver
+    /search?p=inktomi
+    /search?p=microsoft
+    /search?p=ask
+    ...
+    --------------------
+
+    ホスト名に各行を足したURLに対してGETリクエストが投げられます. 
+    有効なパスである必要があり, 例えば, 
+    パラメータpが日本語の場合はURLエンコードしてある必要があります. 
+
+* リクエストヘッダ設定ファイルのフォーマット
+
+    HTTPリクエストヘッダをそのまま記述してください. 
+    (GET行より下から, 改行2つまでの間を自由に記述できます.)
+    なので, 仕様はHTTPに従います. 
+
+    例.
+    --------------------
+    Host: search.yahoo.co.jp
+    User-Agent: CERN-LineMode/2.15 libwww/2.17b3
+    Accept-Language: ja, en-gb;q=0.8, en;q=0.7
+    --------------------
+
+* 使用例
+
+    - スループット測定
+        - % ./bench -p 10 -c 1000 -i PATH.list search.yahoo.co.jp
+
+        - ホストsearch.yahoo.co.jp のPATH.list にあるURLに対して, 10プロセスが並列に各1000リクエストを投げます. 
+          各リクエストはPATH.listの別の行を参照するので, PATH.listは最低でも1000(10*100)行のパスを含む必要があります.
+
+        - tips:
+            - 正確なスループットを測定するには, 頭打ちになるまで -p の値を増やす必要があります. 
+            - ある程度多いパスリストを容易しておき, 数時間リクエストを投げ続けることで, 
+              アプリケーション側のキャッシュ等の効果を踏まえた上のスループットが得られます. 
+              (-c の値を非常に大きい値にする)
+
+    - レスポンスタイム  
+        - % ./bench -p 1 -c 1000 -i PATH.list -s -t 2 search.yahoo.co.jp
+
+        - ホストsearch.yahoo.co.jp のPATH list にあるURLに対して, 1プロセスで1000リクエストを投げます. 
+          スロークエリを有効にして, 閾値を2秒とします. 
+          (スロークエリはslow_queries.log に保存されます.)
+            
+        - tips: 
+            - 通常レスポンスタイムの測定時は, 同時アクセスのプロセス数を1とします. 
+

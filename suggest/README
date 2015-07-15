@@ -1,0 +1,64 @@
+# download corpus
+# for hatena keyword
+% wget http://d.hatena.ne.jp/images/keyword/keywordlist_furigana.csv 
+
+# format the downloaded keyword lists 
+# for hatena keyword
+% nkf -w keywordlist_furigana.csv | ./format_hk.pl > keywords.list
+
+# accept only "key[\t]score" line, so assign a random score to the keys
+% ./format.pl < keywords.list > keywords-scores.list
+
+# index the keyword lists (dump the inverted index into a file)
+% ./index.pl < keywords-scores.list > pfx.idx
+
+# start a suggest program
+% ./suggestme.pl
+loading index .......................... [done]
+query: guu
+
+================
+偶有性 [992]
+グータン [979]
+グーマーダ [950]
+グーグル八分 [946]
+グーグーだって猫である [935]
+グーデリアン [911]
+グーモン [879]
+グーグル・アース [861]
+グーグルマップス [833]
+ぐーぴたっ [830]
+================
+
+0.010000 seconds.
+query: ぐー
+
+================
+グータン [979]
+グーマーダ [950]
+グーグル八分 [946]
+グーグーだって猫である [935]
+グーデリアン [911]
+グーモン [879]
+グーグル・アース [861]
+グーグルマップス [833]
+グーリンダイ [824]
+グーフィー [792]
+================
+
+0.000000 seconds.
+
+
+############################################
+
+# 他のキーワードリストを使いたい場合
+
+各行が "key[\t]score" となるようなファイルを作って, 索引構築プログラムに渡せばOK
+
+
+############################################
+# 懸念点　
+
+* "ぐーｇ" などの変換途中のキーワードを受け付けられない
+*
+*

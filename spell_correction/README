@@ -1,0 +1,88 @@
+# download corpus
+# for hatena keyword
+% wget http://d.hatena.ne.jp/images/keyword/keywordlist_furigana.csv 
+
+# format the downloaded keyword lists 
+# for hatena keyword
+% nkf -w keywordlist_furigana.csv | ./format_hk.pl > keywords.list
+
+# index the keyword lists (dump the inverted index into a file)
+% ./index.pl < keywords.list
+
+# compile client test program
+% g++ main.cpp correctme.cpp -o correctme-test
+
+# complile server programs
+% g++ -Wall -I/usr/local/include/thrift cpp/*.cpp correctme.cpp -lthrift -o corrector
+
+# compile client program (C++)
+% g++ client.cpp -L/usr/local/lib -lthrift -I/usr/local/include/thrift cpp/SpellCorrection.cpp -o client
+
+# start up a daemon
+% ./corrector
+...
+
+# request a correction to the server by C++
+% ./client googla
+for query: [googla]
+
+candidates:
+google
+googol
+igoogle
+dooga
+goga
+goo
+dooggle
+oog
+gold
+gla
+
+# request a correction to the server by PHP
+% php client.php
+Array
+(
+    [0] => Array
+    (
+        [0] => google
+        [1] => dooga
+        [2] => igoogle
+        [3] => googol
+        [4] => goga
+        [5] => goota
+        [6] => goo
+        [7] => dooggle
+        [8] => goa
+        [9] => goofy
+    )
+)
+
+
+############################################
+
+# 他の辞書を使いたい場合
+# 1行1単語のリストを作って, 索引構築プログラムに渡せばOK
+
+# IPA辞書の名詞を追加する場合
+# (http://sourceforge.jp/projects/ipadic/ , http://ipadic.sourceforge.jp/)
+
+# 辞書をダウンロードして展開
+% wget "http://sourceforge.jp/frs/redir.php?m=iij&f=%2Fipadic%2F24435%2Fipadic-2.7.0.tar.gz"
+% tar zxvf ipadic-2.7.0.tar.gz 
+
+# 名詞辞書(Noun.dic)からキーワードの抽出 (58793件)
+% cat Noun.dic | awk '{print substr($5, 2)}' | nkf -w > ipa-noun.list
+
+# はてなキーワードとIPA辞書(名詞)を索引化
+% cat keywords.list ipa-noun.list | ./index.pl
+
+
+
+############################################
+# 懸念点　
+
+* 辞書を追加すれば対応できる単語量は増えるが, 現段階では全索引をメモリ上に保持しているため, 使用できるメモリ量との兼ね合いが必要
+    - はてなキーワード全件で, メモリ上の索引サイズが95M弱
+    - + IPA辞書(名詞)で105M程度
+* 辞書にごみがたくさん含まれているので(特にはてなキーワード)、それを除去する必要がある (ルールを作って対応するなどのヒューリスティックな方法になってしまう)
+* 表記揺れがある

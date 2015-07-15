@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension name="kakasi" version="1.0.0">
+<summary>kakasi perl extension</summary>
+<description><?data
+This is a kakasi PHP extension module.
+?></description>
+
+<maintainers>
+<maintainer>
+<user>hiroyuki</user>
+<name>Hirouki Yamada</name>
+<email></email>
+<role>lead</role>
+</maintainer>
+</maintainers>
+
+<license>PHP</license>
+
+<channel>__uri</channel>
+
+<release>
+<version>1.0.0</version>
+<date>2010-04-14</date>
+<state>stable</state>
+<notes><?data
+- Initial release.
+?></notes>
+</release>
+
+<function name="kakasi_getopt_argv" role="public">
+    <proto>int kakasi_getopt_argv(int argc, array params)</proto>
+    <summary>getopt</summary>
+    <description><?data
+        get options
+    ?></description>
+    <code><?data
+       int num_params = 0;
+       zval** entry = NULL;
+       zend_hash_internal_pointer_reset(params_hash);
+       while (zend_hash_get_current_data(params_hash, (void**)&entry) == SUCCESS) {
+        if (Z_TYPE_PP(entry) == IS_STRING) {
+         num_params++;
+        }
+        else {
+         zval_dtor(return_value);
+         php_error(E_WARNING, "Argument 1 should be a proj parameter strings.");
+         RETURN_FALSE;
+        }
+        zend_hash_move_forward(params_hash);
+       }
+
+       char **argv = malloc(sizeof(char*) * num_params);
+       if (!argv) {
+        zval_dtor(return_value);
+        php_error(E_WARNING, "malloc() error.");
+        RETURN_FALSE;
+       }
+
+       int counter = 0;
+       zend_hash_internal_pointer_reset(params_hash);
+       while (zend_hash_get_current_data(params_hash, (void**)&entry) == SUCCESS) {
+        argv[counter] = Z_STRVAL_PP(entry);
+        zend_hash_move_forward(params_hash);
+        counter++;
+       }
+
+       return kakasi_getopt_argv(argc, argv);
+    ?></code>
+    <test>
+        <code><?data
+
+        kakasi_getopt_argv(5, array("-Ha", "-Ka", "-Ja", "-Ea", "-ka"));
+        ?></code>
+        <result mode="plain"><?data
+        Hello, World!
+        ?></result>
+    </test>  
+</function>
+
+<function name="kakasi_do" role="public">
+    <proto>string kakasi_do(string str)</proto>
+    <summary>getopt</summary>
+    <description><?data
+        kakasi operation 
+    ?></description>
+    <code><?data
+    printf("kakasi_do begin\n");
+    char *p = kakasi_do(str);
+    printf("kakasi_do end\n");
+    if (p != NULL) {
+        printf("length=%d\n", strlen(p));
+        printf("%s\n", p);
+        RETVAL_STRING(p, 1); 
+        printf("after RETVAL_STRING\n");
+        kakasi_free(p);
+    } else {
+        RETVAL_STRINGL(NULL, 0, 1); 
+    }
+    ?></code>
+</function>
+
+</extension>

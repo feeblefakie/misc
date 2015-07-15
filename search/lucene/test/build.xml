@@ -1,0 +1,19 @@
+<project name="lucene_test" default="build">
+
+<property name="build" value="class"/>
+<property name="classpath" value="${build}/lib/lucene-ja.jar:."/>
+
+<target name="prepare">
+    <mkdir dir="${build}"/>
+</target>
+
+<target name="build" depends="prepare">
+    <javac srcdir="src" destdir="${build}" classpath="${classpath}"/>
+</target>
+
+<target name="indexer" depends="build">
+    <java classname="Indexer" classpath="${classpath}"/>
+</target>
+
+</project>
+

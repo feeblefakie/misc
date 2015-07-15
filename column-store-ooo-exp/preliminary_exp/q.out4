@@ -1,0 +1,454 @@
+
+
+HJ-LM
+HJ-LM : 1
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+Late materialization phase
+cnt2: 0
+cnt2: 0
+cnt2: 0
+cnt: 0
+etime(lm-phase): 8.10623e-06
+etime: 16.4314
+HJ-LM : 10
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+Late materialization phase
+cnt2: 0
+cnt2: 0
+cnt2: 0
+cnt: 0
+etime(lm-phase): 6.91414e-06
+etime: 17.0502
+HJ-LM : 100
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+Late materialization phase
+cnt2: 98
+cnt2: 1
+cnt2: 1
+cnt: 100
+etime(lm-phase): 0.500476
+etime: 17.8928
+HJ-LM : 10000
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+Late materialization phase
+cnt2: 9800
+cnt2: 100
+cnt2: 100
+cnt: 10000
+etime(lm-phase): 41.4341
+etime: 64.7018
+HJ-LM : 100000
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+Late materialization phase
+cnt2: 98000
+cnt2: 1000
+cnt2: 1000
+cnt: 100000
+etime(lm-phase): 266.956
+etime: 295.827
+
+
+HJ-LM(OoO)
+HJ-LM : 1
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+Late materialization phase
+cnt2: 0
+cnt2: 0
+cnt2: 0
+cnt: 0
+etime(lm-phase): 7.15256e-06
+etime: 16.9247
+HJ-LM : 10
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+Late materialization phase
+cnt2: 0
+cnt2: 0
+cnt2: 0
+cnt: 0
+etime(lm-phase): 7.86781e-06
+etime: 17.637
+HJ-LM : 100
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+Late materialization phase
+cnt2: 98
+cnt2: 1
+cnt2: 1
+cnt: 100
+etime(lm-phase): 0.100127
+etime: 18.1618
+HJ-LM : 10000
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+Late materialization phase
+cnt2: 9800
+cnt2: 100
+cnt2: 100
+cnt: 10000
+etime(lm-phase): 0.301471
+etime: 24.6823
+HJ-LM : 100000
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+Late materialization phase
+cnt2: 98000
+cnt2: 1000
+cnt2: 1000
+cnt: 100000
+etime(lm-phase): 2.21956
+etime: 31.9207
+
+
+HJ-EM
+HJ-EM : 1
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+etime: 17.358
+HJ-EM : 10
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+etime: 18.6998
+HJ-EM : 100
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+etime: 26.6746
+HJ-EM : 10000
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+etime: 406.967
+HJ-EM : 100000
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+etime: 1218.69
+
+
+HJ-EM(OoO)
+HJ-EM(OoO) : 1
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+etime: 17.2814
+HJ-EM(OoO) : 10
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+etime: 17.5182
+HJ-EM(OoO) : 100
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+etime: 18.3719
+HJ-EM(OoO) : 10000
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+etime: 54.3576
+HJ-EM(OoO) : 100000
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+etime: 313.366
+
+
+NLJ-EM(OoO)
+NLJ-EM(OoO) : 1
+table 1's columns: 4
+table 2's columns: 4
+etime: 0.651476
+NLJ-EM(OoO) : 10
+table 1's columns: 4
+table 2's columns: 4
+etime: 0.616804
+NLJ-EM(OoO) : 100
+table 1's columns: 4
+table 2's columns: 4
+etime: 0.838154
+NLJ-EM(OoO) : 10000
+table 1's columns: 4
+table 2's columns: 4
+etime: 31.6997
+NLJ-EM(OoO) : 100000
+table 1's columns: 4
+table 2's columns: 4
+etime: 316.974
+
+
+NLJ-LM(OoO)
+NLJ-LM(OoO) : 1
+table 1's columns: 4
+table 2's columns: 4
+etime: 0.147247
+NLJ-LM(OoO) : 10
+table 1's columns: 4
+table 2's columns: 4
+etime: 0.11478
+NLJ-LM(OoO) : 100
+table 1's columns: 4
+table 2's columns: 4
+etime: 0.635623
+NLJ-LM(OoO) : 10000
+table 1's columns: 4
+table 2's columns: 4
+etime: 2.32447
+NLJ-LM(OoO) : 100000
+table 1's columns: 4
+table 2's columns: 4
+etime: 20.2171
+
+
+NLJ-EM
+NLJ-EM : 1
+table 1's columns: 4
+table 2's columns: 4
+etime: 1.24307
+NLJ-EM : 10
+table 1's columns: 4
+table 2's columns: 4
+etime: 4.80658
+NLJ-EM : 100
+table 1's columns: 4
+table 2's columns: 4
+etime: 45.8653
+NLJ-EM : 1000
+table 1's columns: 4
+table 2's columns: 4
+etime: 500.238
+
+
+NLJ-LM
+NLJ-LM : 1
+table 1's columns: 4
+table 2's columns: 4
+etime: 0.145618
+NLJ-LM : 10
+table 1's columns: 4
+table 2's columns: 4
+etime: 0.215436
+NLJ-LM : 100
+table 1's columns: 4
+table 2's columns: 4
+etime: 1.63432
+NLJ-LM : 1000
+table 1's columns: 4
+table 2's columns: 4
+etime: 13.6583
+
+
+HJ-LM
+HJ-LM : 1000000
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+Late materialization phase
+cnt2: 980000
+cnt2: 10000
+cnt2: 10000
+cnt: 1000000
+etime(lm-phase): 706.465
+etime: 742.262
+
+
+HJ-LM(OoO)
+HJ-LM : 1000000
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+Late materialization phase
+cnt2: 980000
+cnt2: 10000
+cnt2: 10000
+cnt: 1000000
+etime(lm-phase): 20.1582
+etime: 56.8709
+
+
+HJ-EM
+HJ-EM : 1000000
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+etime: 317.509
+
+
+HJ-EM(OoO)
+HJ-EM(OoO) : 1000000
+table 1's columns: 4
+table 2's columns: 4
+scanned 0
+scanned 1
+scanned 2
+etime: 337.318
+
+
+NLJ-EM(OoO)
+NLJ-EM(OoO) : 1000000
+table 1's columns: 4
+table 2's columns: 4
+etime: 3160.23
+
+
+NLJ-LM(OoO)
+NLJ-LM(OoO) : 1000000
+table 1's columns: 4
+table 2's columns: 4
+etime: 138.53
+
+
+
+HJ-LM
+HJ-LM : 10000000
+cnt: 10000000
+etime(lm-phase): 747.536
+etime: 812.282
+
+
+HJ-LM(OoO)
+HJ-LM : 10000000
+cnt: 10000000
+etime(lm-phase): 155.563
+etime: 220.161
+
+
+HJ-EM
+HJ-EM : 10000000
+etime: 325.59
+
+
+HJ-EM(OoO)
+HJ-EM(OoO) : 10000000
+etime: 2103.64
+
+
+NLJ-LM(OoO)
+NLJ-LM(OoO) : 10000000
+etime: 903.945
+
+
+NLJ-LM
+NLJ-LM : 100000
+etime: 1390.39
+
+
+HJ-LM
+HJ-LM : 1
+cnt: 0
+etime(lm-phase): 0
+etime: 16.4207
+HJ-LM : 10
+cnt: 0
+etime(lm-phase): 0
+etime: 17.0549
+HJ-LM : 100
+cnt: 0
+etime(lm-phase): 0
+etime: 17.7811
+HJ-LM : 1000
+cnt: 0
+etime(lm-phase): 0
+etime: 19.6836
+HJ-LM : 10000
+cnt: 0
+etime(lm-phase): 0
+etime: 28.7848
+HJ-LM : 100000
+cnt: 0
+etime(lm-phase): 0
+etime: 71.1463
+HJ-LM : 1000000
+cnt: 0
+etime(lm-phase): 0
+etime: 326.006
+HJ-LM : 10000000
+cnt: 0
+etime(lm-phase): 0
+etime: 1628.83
+
+
+NLJ-EM(OoO)
+NLJ-EM(OoO) : 1
+etime: 0.121982
+NLJ-EM(OoO) : 10
+etime: 0.202258
+NLJ-EM(OoO) : 100
+etime: 0.710122
+NLJ-EM(OoO) : 1000
+etime: 0.667255
+
+
+NLJ-LM(OoO)
+NLJ-LM(OoO) : 1
+etime: 0.102556
+NLJ-LM(OoO) : 10
+etime: 0.10222
+NLJ-LM(OoO) : 100
+etime: 0.20305
+NLJ-LM(OoO) : 1000
+etime: 0.232264
