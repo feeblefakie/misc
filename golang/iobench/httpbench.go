@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"runtime"
-	"sync"
+	"sync/atomic"
 	"time"
 )
 
@@ -22,34 +22,28 @@ func main() {
 	}
 
 	runtime.GOMAXPROCS(runtime.NumCPU())
-	m := new(sync.Mutex)
 	var doneRequests int64 = 0
 
 	for i := 0; i < *concurrency; i++ {
-		go httpRequest(url, &doneRequests, *total, m)
+		go httpRequest(url, &doneRequests, *total)
 	}
 
 	start := time.Now()
 	//var input string
 	//fmt.Scanln(&input)
-	for {
+	for doneRequests < *total {
 		end := time.Now()
 		interval := int64(end.Sub(start).Seconds())
 		if interval != 0 {
-			fmt.Printf("total: %d, reqs/s: %d\r", doneRequests, doneRequests/interval)
+			fmt.Printf("total: %7d, reqs/s: %7d\r", doneRequests, doneRequests/interval)
 		}
 		time.Sleep(time.Millisecond * 100)
 	}
 }
 
-func httpRequest(url *string, doneRequests *int64, total int64, m *sync.Mutex) {
+func httpRequest(url *string, doneRequests *int64, total int64) {
 	for {
-		m.Lock()
-		*doneRequests++
-		if *doneRequests == total {
-			return
-		}
-		m.Unlock()
+		atomic.AddInt64(doneRequests, 1)
 
 		req, _ := http.NewRequest("GET", *url, nil)
 		client := new(http.Client)
