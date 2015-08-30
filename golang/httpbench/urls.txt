@@ -1,0 +1,6 @@
+GET http://yahoo.co.jp
+GET http://yahoo.co.jp
+GET http://yahoo.co.jp
+GET http://yahoo.co.jp
+GET http://yahoo.co.jp
+POST http://yahoo.co.jp a=1&b=2
