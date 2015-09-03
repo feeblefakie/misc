@@ -10,6 +10,7 @@ import (
 	"runtime"
 	"strconv"
 	"strings"
+	"sync"
 	"sync/atomic"
 	"time"
 )
@@ -23,10 +24,9 @@ type HttpStats struct {
 
 func main() {
 	file := flag.String("file", "", "a file which has list of URLs to be accessed")
-	tmpfile := "/tmp/" + strconv.FormatInt(int64(os.Getegid()), 10) + ".err"
+	tmpfile := "/tmp/" + strconv.FormatInt(int64(os.Getpid()), 10) + ".err"
 	efile := flag.String("error_to", tmpfile, "a file for error messages")
 	concurrency := flag.Int("concurrency", 1, "concurrency")
-	total := flag.Int64("total", 10000, "total")
 	flag.Parse()
 
 	if *file == "" {
@@ -57,30 +57,32 @@ func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 	stats := &HttpStats{}
 
+	mutex := new(sync.Mutex)
 	for i := 0; i < *concurrency; i++ {
-		go httpRequest(lines, stats, *total, ef)
+		go httpRequest(lines, stats, ef, mutex)
 	}
 
 	start := time.Now()
-	for stats.doneRequests < *total {
+	for int(stats.doneRequests) < len(lines) {
 		end := time.Now()
 		interval := int64(end.Sub(start).Seconds())
 		if interval != 0 {
-			fmt.Printf("ok: %6d,  errors: %6d,  reqs/s: %6d,  accumLat: %6d, aveLat(ms): %6d \r",
-				stats.numSucceeded, stats.numFailed, stats.numSucceeded/interval, stats.accumLatencies, stats.accumLatencies/interval/1000000)
+			printStats(stats, interval)
 		}
 		time.Sleep(time.Millisecond * 100)
 	}
+	end := time.Now()
+	interval := int64(end.Sub(start).Seconds())
+	printStats(stats, interval)
 }
 
-func httpRequest(lines []string, stats *HttpStats, total int64, errorFile *os.File) {
+func httpRequest(lines []string, stats *HttpStats, errorFile *os.File, mutex *sync.Mutex) {
 	for {
 		offset := atomic.AddInt64(&stats.doneRequests, 1)
 		if int(offset) > len(lines) {
 			break
 		}
 		line := lines[offset-1]
-		//fmt.Println(line)
 
 		// format: [Method URL BodyParameters(for POST)]
 		items := strings.Split(line, " ")
@@ -88,20 +90,29 @@ func httpRequest(lines []string, stats *HttpStats, total int64, errorFile *os.Fi
 		if len(items) > 2 {
 			body = strings.NewReader(items[2])
 		}
+
 		req, _ := http.NewRequest(items[0], items[1], body)
 		client := new(http.Client)
+
 		start := time.Now()
 		resp, err := client.Do(req)
 		end := time.Now()
+
 		interval := int64(end.Sub(start).Nanoseconds())
-		//fmt.Println(resp)
 		atomic.AddInt64(&stats.accumLatencies, interval)
 		if err != nil {
 			atomic.AddInt64(&stats.numFailed, 1)
+			mutex.Lock()
 			errorFile.WriteString(err.Error() + "\n")
+			mutex.Unlock()
 		} else {
 			atomic.AddInt64(&stats.numSucceeded, 1)
 		}
 		resp.Body.Close()
 	}
+}
+
+func printStats(stats *HttpStats, interval int64) {
+	fmt.Printf("ok: %6d,  errors: %6d,  reqs/s: %6d,  aveLat(ms): %6d \r",
+		stats.numSucceeded, stats.numFailed, stats.numSucceeded/interval, stats.accumLatencies/interval/1000000)
 }
