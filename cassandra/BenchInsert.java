@@ -8,6 +8,7 @@ public class BenchInsert {
     public static void main(String[] args) {
         String endpoint = null;
         String keyspace = null;
+        String table = null;
         String filename = null;
 
         for (int i = 0; i < args.length; ++i) {
@@ -15,14 +16,16 @@ public class BenchInsert {
                 endpoint = args[++i];
             } else if ("-keyspace".equals(args[i])) {
                 keyspace = args[++i];
+            } else if ("-table".equals(args[i])) {
+                table = args[++i];
             } else if ("-filename".equals(args[i])) {
                 filename = args[++i];
             } else {
-                System.err.println("BenchInsert -endpoint hostname -keyspace keyspace -filename access-list-file");
+                System.err.println("BenchInsert -endpoint hostname -keyspace keyspace -table table -filename access-list-file");
             }
         }
-        if (endpoint == null || keyspace == null || filename == null) {
-            System.err.println("BenchInsert -endpoint hostname -keyspace keyspace -filename access-list-file");
+        if (endpoint == null || keyspace == null || table == null || filename == null) {
+            System.err.println("BenchInsert -endpoint hostname -keyspace keyspace -table table -filename access-list-file");
             System.exit(1);
         }
 
@@ -45,7 +48,7 @@ public class BenchInsert {
             File file = new File(filename);
             BufferedReader br = new BufferedReader(new FileReader(file));
 
-            PreparedStatement statement = session.prepare("INSERT INTO users (user_id, fname, lname, number) VALUES (?, ?, ?, ?)");
+            PreparedStatement statement = session.prepare("INSERT INTO " + table + " (user_id, fname, lname, number) VALUES (?, ?, ?, ?)");
             BoundStatement boundStatement = new BoundStatement(statement);
 
             int numRecords = 0;
