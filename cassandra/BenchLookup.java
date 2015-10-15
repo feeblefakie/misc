@@ -6,12 +6,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 import com.datastax.driver.core.*;
 import com.datastax.driver.core.querybuilder.*;
 import com.datastax.driver.core.policies.*;
+import com.datastax.driver.core.exceptions.*;
 
 public class BenchLookup {
 
     private static Cluster cluster;
     private static Session session;
-    private static ResultSet results;
     private static BlockingQueue<String> queue;
     private static String endpoint = null;
     private static String keyspace = null;
@@ -52,6 +52,7 @@ public class BenchLookup {
                 .build();
             session = cluster.connect(keyspace);
 
+            System.err.print("data loading ... ");
             queue = new LinkedBlockingQueue<String>();
             File file = new File(filename);
             BufferedReader br = new BufferedReader(new FileReader(file));
@@ -65,6 +66,7 @@ public class BenchLookup {
                 ++numRecords;
             }
             br.close();
+            System.err.println("[done]");
 
             long start = System.currentTimeMillis();
             Thread []threads = new Lookuper[concurrency];
@@ -79,8 +81,8 @@ public class BenchLookup {
             long end = System.currentTimeMillis();
 
             long interval = (end - start) / 1000;
-            System.out.println("time taken (s) : " + interval);
-            System.out.println("throughput (records/s) : " + numRecords/interval);
+            System.err.println("time taken (s) : " + interval);
+            System.err.println("throughput (records/s) : " + numRecords/interval);
 
             // Clean up the connection by closing it
             cluster.close();
@@ -104,7 +106,12 @@ public class BenchLookup {
 
                     Statement statement = QueryBuilder.select().all().from(table)
                                                 .where(QueryBuilder.eq(items[0], Integer.parseInt(items[1])));
-                    results = session.execute(statement);
+                    ResultSet results = session.execute(statement);
+                    /*
+                    for (Row row : results) {
+                        System.out.format("%d\n", row.getInt("user_id"));
+                    }
+                    */
                 }
             } catch (Exception e) {
                 e.printStackTrace();
