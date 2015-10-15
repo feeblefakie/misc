@@ -80,7 +80,7 @@ public class BenchLookup {
             }
             long end = System.currentTimeMillis();
 
-            long interval = (end - start) / 1000;
+            double interval = (double) (end - start) / 1000;
             System.err.println("time taken (s) : " + interval);
             System.err.println("throughput (records/s) : " + numRecords/interval);
 
