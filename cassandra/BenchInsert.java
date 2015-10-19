@@ -29,6 +29,8 @@ public class BenchInsert {
             System.exit(1);
         }
 
+        String[] endpoints = endpoint.split(":");
+
         Cluster cluster;
         Session session;
         ResultSet results;
@@ -37,7 +39,7 @@ public class BenchInsert {
         try {
             cluster = Cluster
                 .builder()
-                .addContactPoint(endpoint)
+                .addContactPoints(endpoints)
                 .withRetryPolicy(DefaultRetryPolicy.INSTANCE)
                 .withLoadBalancingPolicy(new TokenAwarePolicy(new DCAwareRoundRobinPolicy()))
                 .build();
@@ -68,9 +70,9 @@ public class BenchInsert {
             br.close();
 
             long end = System.currentTimeMillis();
-            long interval = end - start / 1000;
-            System.out.println("time taken (ms) : " + interval);
-            System.out.println("throughput (records/s) : " + interval/numRecords/1000);
+            long interval = (end - start) / 1000;
+            System.out.println("time taken (s) : " + interval);
+            System.out.println("throughput (records/s) : " + numRecords/interval);
 
             // Clean up the connection by closing it
             cluster.close();
