@@ -1,3 +1,5 @@
+package benchmark;
+
 import java.io.*;
 import java.util.*;
 import com.datastax.driver.core.*;

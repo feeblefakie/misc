@@ -1,3 +1,5 @@
+package benchmark;
+
 import com.datastax.driver.core.*;
 import com.datastax.driver.core.querybuilder.*;
 import com.datastax.driver.core.policies.*;

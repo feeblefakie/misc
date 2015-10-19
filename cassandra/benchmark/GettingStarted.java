@@ -1,3 +1,4 @@
+package benchmark;
 
 import com.datastax.driver.core.*;
 import java.util.Calendar;

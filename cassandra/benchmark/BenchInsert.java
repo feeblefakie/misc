@@ -1,3 +1,5 @@
+package benchmark;
+
 import java.io.*;
 import com.datastax.driver.core.*;
 import com.datastax.driver.core.querybuilder.*;
