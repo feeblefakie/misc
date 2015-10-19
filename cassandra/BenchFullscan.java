@@ -47,17 +47,17 @@ public class BenchFullscan {
             int numRecords = 0;
             long start = System.currentTimeMillis();
             Statement select = QueryBuilder.select().all().from(keyspace, table);
-            //select.setFetchSize(2000);
+            select.setFetchSize(100000);
             results = session.execute(select);
             for (Row row : results) {
-                System.out.format("%d %s %s %d\n", row.getInt("user_id"), row.getString("fname"), row.getString("lname"), row.getInt("number"));
+                System.out.format("%d,%s,%s,%d\n", row.getInt("user_id"), row.getString("fname"), row.getString("lname"), row.getInt("number"));
                 ++numRecords;
             }
             long end = System.currentTimeMillis();
 
             long interval = (end - start) / 1000;
-            System.out.println("time taken (s) : " + interval);
-            System.out.println("throughput (records/s) : " + numRecords/interval);
+            System.err.println("time taken (s) : " + interval);
+            System.err.println("throughput (records/s) : " + numRecords/interval);
 
             // Clean up the connection by closing it
             cluster.close();
