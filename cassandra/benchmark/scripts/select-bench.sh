@@ -8,4 +8,4 @@ table="users5"
 filename="selectdata.dat.1000000"
 concurrency=100
 
-java -classpath "cassandra-java-driver-2.1.8/*:cassandra-java-driver-2.1.8/lib/*:/usr/share/cassandra/lib/*:." BenchLookup -endpoint $endpoints -keyspace $keyspace -table $table -filename $filename -concurrency $concurrency
+gradle run -Pmain=benchmark.BenchLookup -Pargs="-endpoint $endpoints -keyspace $keyspace -table $table -filename $filename -concurrency $concurrency"

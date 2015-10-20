@@ -5,4 +5,4 @@ endpoints="aoba01:aoba02:aoba03:aoba04"
 keyspace="mykeyspace"
 table="users5"
 
-java -classpath "cassandra-java-driver-2.1.8/*:cassandra-java-driver-2.1.8/lib/*:/usr/share/cassandra/lib/*:." BenchFullscan -endpoint $endpoints -keyspace $keyspace -table $table
+gradle run -Pmain=benchmark.BenchFullscan -Pargs="-endpoint $endpoints -keyspace $keyspace -table $table"

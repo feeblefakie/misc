@@ -6,5 +6,4 @@ keyspace="mykeyspace"
 table="users5"
 filename="/tmp/rawdata_big.csv.4nodes"
 
-#java -classpath "cassandra-java-driver-2.1.8/*:cassandra-java-driver-2.1.8/lib/*:/usr/share/cassandra/lib/*:." BenchInsert -endpoint $endpoints -keyspace $keyspace -table $table -filename $filename
-java -classpath "cassandra-java-driver-2.1.8/*:cassandra-java-driver-2.1.8/lib/*:/usr/share/cassandra/lib/*:." BenchBatchInsert -endpoint $endpoints -keyspace $keyspace -table $table -filename $filename
+gradle run -Pmain=benchmark.BenchBatchInsert -Pargs="-endpoint $endpoints -keyspace $keyspace -table $table -filename $filename"
