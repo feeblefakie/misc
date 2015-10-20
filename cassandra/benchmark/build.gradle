@@ -1,0 +1,13 @@
+apply plugin: 'application'
+
+mainClassName = 'benchmark.fake'
+
+run {
+    if (project.hasProperty('main')) {    
+        main(project.main)
+    }
+
+    if (project.hasProperty('args')) {
+        args project.args.split('\\s+')
+    }
+}
