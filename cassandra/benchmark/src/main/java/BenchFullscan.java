@@ -27,11 +27,11 @@ public class BenchFullscan {
             } else if ("-table".equals(args[i])) {
                 table = args[++i];
             } else {
-                System.err.println("BenchInsert -endpoint hostname -keyspace keyspace -table table");
+                System.err.println("BenchFullscan -endpoint hostname -keyspace keyspace -table table");
             }
         }
         if (endpoint == null || keyspace == null || table == null) {
-            System.err.println("BenchInsert -endpoint hostname -keyspace keyspace -table table");
+            System.err.println("BenchFullscan -endpoint hostname -keyspace keyspace -table table");
             System.exit(1);
         }
 
