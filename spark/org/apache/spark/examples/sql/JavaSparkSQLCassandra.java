@@ -38,13 +38,15 @@ import org.apache.spark.sql.cassandra.CassandraSQLContext;
 public class JavaSparkSQLCassandra {
 
   public static void main(String[] args) throws Exception {
-    SparkConf sparkConf = new SparkConf().setAppName("JavaSparkSQL");
-    SparkContext ctx = new SparkContext(sparkConf);
+    SparkConf sparkConf = new SparkConf().setAppName("JavaSparkSQL").set("spark.cassandra.connection.host", "192.168.110.101").set("spark.executor.extraClassPath", "/home/hiroyuki/packages/spark-cassandra-connector-1.4.0-s_2.10/spark-cassandra-connector-java/target/scala-2.10/spark-cassandra-connector-java-assembly-1.4.0-SNAPSHOT.jar");
+
+    SparkContext ctx = new SparkContext("spark://192.168.110.101:7077", "app", sparkConf);
     //JavaSparkContext jctx = new JavaSparkContext(sparkConf);
     //SQLContext sqlContext = new SQLContext(jctx);
     CassandraSQLContext cassandraContext = new CassandraSQLContext(ctx);
 
     DataFrame users = cassandraContext.sql("select * from mykeyspace.users limit 3");
+    users.show();
 
   }
 }
