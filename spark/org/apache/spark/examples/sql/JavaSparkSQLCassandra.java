@@ -48,5 +48,7 @@ public class JavaSparkSQLCassandra {
     DataFrame users = cassandraContext.sql("select * from mykeyspace.users limit 3");
     users.show();
 
+    System.out.println(users.schema().fieldNames());
+
   }
 }
