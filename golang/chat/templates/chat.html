@@ -11,6 +11,7 @@ ul { list-style: none; }
 </ul>
 web socket chat application
 <form id="chatbox">
+{{.UserData.name}} ({{.UserData.email}}) : <br/>
 <textarea></textarea>
 <input type="submit" value="send" />
 </form>
@@ -26,7 +27,7 @@ web socket chat application
 				alert("error: no connection for websocket");
 				return false;
 			}
-			socket.send(msgBox.val());
+			socket.send(JSON.stringify({"Message": msgBox.val()}));
 			msgBox.val("");
 			return false;
 		});
@@ -39,7 +40,13 @@ web socket chat application
 				alert("connection closed")
 			} 
 			socket.onmessage = function(e) {
-				messages.append($("<li>").text(e.data));
+				var msg = JSON.parse(e.data)
+				messages.append(
+					$("<li>").append(
+						$("<strong>").text(msg.Name + " (" + msg.Email + ") : "),
+						$("<span>").text(msg.Message)
+					)
+				);
 			}
 		}
 	});
