@@ -38,8 +38,9 @@ import org.apache.calcite.tools.*;
 
 public class SimpleQueryPlanner {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, ValidationException, RelConversionException {
-        String sql = "select * from os.orders o1 join os.orders o2 on o1.orderid = o2.orderid where o1.productid > 10";
+        //String sql = "select * from os.orders o1 join os.orders o2 on o1.orderid = o2.orderid where o1.productid > 10";
         //String sql = "select * from os.orders where productid > 10";
+        String sql = "select l.orderkey, l.quantity from tpch.customer c join tpch.orders o on c.custkey = o.custkey join tpch.lineitem l on o.orderkey = l.orderkey where c.custkey < 20000";
         RelNode plan = SimpleQueryPlanner.getOptimizedPlan1(sql);
         //RelNode plan = SimpleQueryPlanner.getOptimizedPlan2(sql);
 	    System.out.println(RelOptUtil.toString(plan));
@@ -53,7 +54,8 @@ public class SimpleQueryPlanner {
         CalciteConnection calciteConnection =
                 connection.unwrap(CalciteConnection.class);
         SchemaPlus rootSchema = calciteConnection.getRootSchema();
-        rootSchema.add("os", new ReflectiveSchema(new Os()));
+        //rootSchema.add("os", new ReflectiveSchema(new Os()));
+        rootSchema.add("tpch", new ReflectiveSchema(new Tpch()));
 
         final List<RelTraitDef> traitDefs = new ArrayList<RelTraitDef>();
         traitDefs.add(ConventionTraitDef.INSTANCE);
@@ -131,6 +133,7 @@ public class SimpleQueryPlanner {
     }
     */
 
+    /*
 	public static class Os {
 	    public final Order[] orders = {
 	      new Order(3,1,12),
@@ -151,4 +154,62 @@ public class SimpleQueryPlanner {
 	      this.units=units;      
 	    }
 	}
+	*/
+
+    public static class Tpch {
+        public final Lineitem[] lineitem = {
+                new Lineitem(1,100,100,1,1),
+                new Lineitem(2,100,100,1,1),
+                new Lineitem(3,100,100,1,1),
+        };
+        public final Order[] orders = {
+                new Order(1,1),
+                new Order(2,2),
+                new Order(3,2),
+        };
+        public final Customer[] customer = {
+                new Customer(1, "customer1", "tokyo", 1),
+                new Customer(2, "customer2", "tokyo", 1),
+        };
+    }
+
+    public static class Lineitem {
+        public final int orderkey;
+        public final int partkey;
+        public final int suppkey;
+        public final int linenumber;
+        public final int quantity;
+
+        public Lineitem(int orderkey, int partkey, int suppkey, int linenumber, int quantity) {
+            this.orderkey = orderkey;
+            this.partkey = partkey;
+            this.suppkey = suppkey;
+            this.linenumber = linenumber;
+            this.quantity = quantity;
+        }
+    }
+
+    public static class Order {
+        public final int orderkey;
+        public final int custkey;
+
+        public Order(int orderkey, int custkey) {
+            this.orderkey = orderkey;
+            this.custkey = custkey;
+        }
+    }
+
+    public static class Customer {
+        public final int custkey;
+        public final String name;
+        public final String address;
+        public final int nationkey;
+
+        public Customer(int custkey, String name, String address, int nationkey) {
+            this.custkey = custkey;
+            this.name = name;
+            this.address = address;
+            this.nationkey = nationkey;
+        }
+    }
 }
