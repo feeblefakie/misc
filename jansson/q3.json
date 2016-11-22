@@ -1,0 +1,96 @@
+{
+  "rels": [
+    {
+      "id": "0",
+      "relOp": "org.apache.calcite.adapter.enumerable.EnumerableTableScan",
+      "table": [
+        "tpch",
+        "customer"
+      ],
+      "inputs": []
+    },
+    {
+      "id": "1",
+      "relOp": "org.apache.calcite.adapter.enumerable.EnumerableFilter",
+      "condition": {
+        "op": "<",
+        "operands": [
+          {
+            "input": 0
+          },
+          20000
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "relOp": "org.apache.calcite.adapter.enumerable.EnumerableTableScan",
+      "table": [
+        "tpch",
+        "index_orders2"
+      ],
+      "inputs": []
+    },
+    {
+      "id": "3",
+      "relOp": "org.apache.calcite.adapter.enumerable.EnumerableJoin",
+      "condition": {
+        "op": "=",
+        "operands": [
+          {
+            "input": 0
+          },
+          {
+            "input": 8
+          }
+        ]
+      },
+      "joinType": "inner",
+      "inputs": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "id": "4",
+      "relOp": "org.apache.calcite.adapter.enumerable.EnumerableTableScan",
+      "table": [
+        "tpch",
+        "lineitem"
+      ],
+      "inputs": []
+    },
+    {
+      "id": "5",
+      "relOp": "org.apache.calcite.adapter.enumerable.EnumerableJoin",
+      "condition": {
+        "op": "=",
+        "operands": [
+          {
+            "input": 9
+          },
+          {
+            "input": 10
+          }
+        ]
+      },
+      "joinType": "inner",
+      "inputs": [
+        "3",
+        "4"
+      ]
+    },
+    {
+      "id": "6",
+      "relOp": "org.apache.calcite.adapter.enumerable.EnumerableProject",
+      "fields": [
+        "quantity"
+      ],
+      "exprs": [
+        {
+          "input": 14
+        }
+      ]
+    }
+  ]
+}
