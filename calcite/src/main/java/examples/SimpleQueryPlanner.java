@@ -1,5 +1,6 @@
 package examples;
 
+import java.io.StringWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -22,9 +23,13 @@ import org.apache.calcite.plan.*;
 import org.apache.calcite.prepare.CalciteCatalogReader;
 import org.apache.calcite.rel.RelCollationTraitDef;
 import org.apache.calcite.rel.RelNode;
+import org.apache.calcite.rel.RelWriter;
+import org.apache.calcite.rel.externalize.RelJsonWriter;
 import org.apache.calcite.rel.rules.FilterJoinRule;
 import org.apache.calcite.rel.rules.FilterMergeRule;
 import org.apache.calcite.rel.type.RelDataTypeSystem;
+import org.apache.calcite.rex.RexNode;
+import org.apache.calcite.rex.RexShuttle;
 import org.apache.calcite.schema.SchemaPlus;
 import org.apache.calcite.sql.SqlNode;
 import org.apache.calcite.sql.fun.SqlStdOperatorTable;
@@ -40,11 +45,33 @@ public class SimpleQueryPlanner {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, ValidationException, RelConversionException {
         //String sql = "select * from os.orders o1 join os.orders o2 on o1.orderid = o2.orderid where o1.productid > 10";
         //String sql = "select * from os.orders where productid > 10";
-        String sql = "select l.orderkey, l.quantity from tpch.customer c join tpch.orders o on c.custkey = o.custkey join tpch.lineitem l on o.orderkey = l.orderkey where c.custkey < 20000";
+        //String sql = "select l.quantity from tpch.customer c join tpch.orders o on c.custkey = o.custkey join tpch.lineitem l on o.orderkey = l.orderkey where c.custkey < 20000";
+        //String sql = "select c.name, l.quantity from tpch.customer c join tpch.index_orders2 o on c.custkey = o.custkey join tpch.lineitem l on o.orderkey = l.orderkey where c.custkey < 20000 and c.nationkey > 1";
+        String sql = "select c.name from tpch.customer c where c.custkey < 20000";
         RelNode plan = SimpleQueryPlanner.getOptimizedPlan1(sql);
         //RelNode plan = SimpleQueryPlanner.getOptimizedPlan2(sql);
 	    System.out.println(RelOptUtil.toString(plan));
+
+
+        RelJsonWriter writer = new RelJsonWriter();
+        plan.explain(writer);
+        System.out.println(writer.asString());
+
+        printPlan(plan);
 	}
+
+	public static void printPlan(RelNode root) {
+        System.out.println(root);
+        for (RexNode rex : root.getChildExps()) {
+            System.out.println("==" + rex.getKind());
+            System.out.println("==" + rex.getType());
+            System.out.println("==" + rex.toString());
+        }
+        //System.out.println("    " + root.accept(new RexShuttle()));
+        for (RelNode node : root.getInputs()) {
+            printPlan(node);
+        }
+    }
 
 	public static RelNode getOptimizedPlan1(String sql) throws ClassNotFoundException, SQLException, ValidationException, RelConversionException {
         // TODO Auto-generated method stub
@@ -167,6 +194,11 @@ public class SimpleQueryPlanner {
                 new Order(2,2),
                 new Order(3,2),
         };
+        public final IndexOrder[] index_orders2 = {
+                new IndexOrder(1,1),
+                new IndexOrder(2,2),
+                new IndexOrder(2,3),
+        };
         public final Customer[] customer = {
                 new Customer(1, "customer1", "tokyo", 1),
                 new Customer(2, "customer2", "tokyo", 1),
@@ -179,6 +211,17 @@ public class SimpleQueryPlanner {
         public final int suppkey;
         public final int linenumber;
         public final int quantity;
+        public final int extendedprice = 0;
+        public final int discount = 0;
+        public final int tax = 0;
+        public final boolean returnflag = false;
+        public final int linestatus = 0;
+        public final String shipdate = null;
+        public final String commitdate = null;
+        public final String receiptdate = null;
+        public final String shipinstruct = null;
+        public final String shipmode = null;
+        public final String comment = null;
 
         public Lineitem(int orderkey, int partkey, int suppkey, int linenumber, int quantity) {
             this.orderkey = orderkey;
@@ -192,10 +235,27 @@ public class SimpleQueryPlanner {
     public static class Order {
         public final int orderkey;
         public final int custkey;
+        public final int orderstatus = 0;
+        public final int totalprice = 0;
+        public final String orderdate = null;
+        public final String orderpriority = null;
+        public final String clerk = null;
+        public final int shippriority = 0;
+        public final String comment = null;
 
         public Order(int orderkey, int custkey) {
             this.orderkey = orderkey;
             this.custkey = custkey;
+        }
+    }
+
+    public static class IndexOrder {
+        public final int custkey;
+        public final int orderkey;
+
+        public IndexOrder(int custkey, int orderkey) {
+            this.custkey = custkey;
+            this.orderkey = orderkey;
         }
     }
 
@@ -204,6 +264,10 @@ public class SimpleQueryPlanner {
         public final String name;
         public final String address;
         public final int nationkey;
+        public final String phone = null;
+        public final int acctbal = 0;
+        public final String mktsegment = null;
+        public final String comment = null;
 
         public Customer(int custkey, String name, String address, int nationkey) {
             this.custkey = custkey;
