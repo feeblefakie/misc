@@ -24,13 +24,16 @@ public class SampleConsumer {
 
         consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Arrays.asList("my-topic"));
-        System.out.printf("subscribe " + consumer.subscription());
-        System.out.printf("assignments " + consumer.assignment());
+        System.out.println("subscribe " + consumer.subscription());
+        System.out.println("assignments " + consumer.assignment());
     }
 
     public void process() {
         //List<ConsumerRecord<String, String>> buffer = new ArrayList<>();
         try {
+            TopicPartition tp = new TopicPartition("my-topic", 0);
+            System.out.printf("last synced: %d\n", consumer.committed(tp).offset());
+
             while (true) {
                 //ConsumerRecords<String, String> records = consumer.poll(Long.MAX_VALUE);
                 ConsumerRecords<String, Row> records = consumer.poll(Long.MAX_VALUE);
@@ -48,11 +51,12 @@ public class SampleConsumer {
                 long lastOffset;
                 if (partitionRecords.size() > 1) {
                     lastOffset = partitionRecords.get(partitionRecords.size() - 2).offset(); // set one previous for test
-                    System.out.printf("set one previous offset for test");
+                    System.out.println("set one previous offset for test");
                 } else {
                     lastOffset = partitionRecords.get(partitionRecords.size() - 1).offset();
                 }
                 consumer.commitSync(Collections.singletonMap(partition, new OffsetAndMetadata(lastOffset + 1)));
+                System.out.printf("synced: %d\n", lastOffset + 1);
             }
         } finally {
             close();

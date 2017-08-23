@@ -95,14 +95,14 @@ public class Column implements NamedBytes, Cloneable, Serializable {
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
-        sb.append("name : #" + name + "#\n");
-        sb.append("bytes(ByteBuffer) : #" + bytes + "#\n");
+        sb.append("name : #" + getName() + "#\n");
+        sb.append("bytes(ByteBuffer) : #" + getBytes() + "#\n");
         try {
-            sb.append("bytes : #" + TypeConverter.getObjectFromBytes(bytes, type) + "#\n");
+            sb.append("bytes : #" + TypeConverter.getObjectFromBytes(getBytes(), getType()) + "#\n");
         } catch (Exception e) {
             sb.append("bytes : ERROR (could not be converted correctly)\n");
         }
-        sb.append("type : #" + type + "#\n");
+        sb.append("type : #" + getType() + "#\n");
         return sb.toString();
     }
 
