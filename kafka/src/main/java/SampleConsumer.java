@@ -10,7 +10,8 @@ import java.util.Properties;
  * Created by hiroyuki on 2017/08/15.
  */
 public class SampleConsumer {
-    private Consumer<String, String> consumer;
+    //private Consumer<String, String> consumer;
+    private Consumer<String, Row> consumer;
 
     public SampleConsumer() {
         Properties props = new Properties();
@@ -18,7 +19,8 @@ public class SampleConsumer {
         props.put("group.id", "test");
         props.put("enable.auto.commit", "false");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        //props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        props.put("value.deserializer", "RowDeserializer");
 
         consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Arrays.asList("my-topic"));
@@ -30,15 +32,17 @@ public class SampleConsumer {
         //List<ConsumerRecord<String, String>> buffer = new ArrayList<>();
         try {
             while (true) {
-                ConsumerRecords<String, String> records = consumer.poll(Long.MAX_VALUE);
+                //ConsumerRecords<String, String> records = consumer.poll(Long.MAX_VALUE);
+                ConsumerRecords<String, Row> records = consumer.poll(Long.MAX_VALUE);
                 if (records.partitions().size() != 1) {
                     System.err.println("Error: multiple partitions for some reason");
                 }
                 TopicPartition partition = records.partitions().iterator().next();
 
-                List<ConsumerRecord<String, String>> partitionRecords = records.records(partition);
+                //List<ConsumerRecord<String, String>> partitionRecords = records.records(partition);
+                List<ConsumerRecord<String, Row>> partitionRecords = records.records(partition);
 
-                for (ConsumerRecord<String, String> record : partitionRecords) {
+                for (ConsumerRecord<String, Row> record : partitionRecords) {
                     System.out.println(record.offset() + ": " + record.value());
                 }
                 long lastOffset;

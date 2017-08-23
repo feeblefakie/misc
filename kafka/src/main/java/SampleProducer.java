@@ -7,7 +7,7 @@ import java.util.Properties;
  */
 public class SampleProducer {
     private static SampleProducer instance = null;
-    private Producer<String, String> producer;
+    private Producer<String, Row> producer;
 
     private SampleProducer() {
         Properties props = new Properties();
@@ -19,9 +19,10 @@ public class SampleProducer {
         props.put("linger.ms", 1);
         props.put("buffer.memory", 33554432);
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        //props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        props.put("value.serializer", "RowSerializer");
 
-        producer = new KafkaProducer<>(props);
+        producer = new KafkaProducer<String, Row>(props);
     }
 
     public static synchronized SampleProducer getInstance() {
@@ -31,9 +32,26 @@ public class SampleProducer {
         return instance;
     }
 
+    /*
     public void send(String key, String value) {
         //producer.send(new ProducerRecord<>("my-topic", key, value));
-        producer.send(new ProducerRecord<>("my-topic", key, value),
+        producer.send(new ProducerRecord<String, Row>("my-topic", key, value),
+                new Callback() {
+                    public void onCompletion(RecordMetadata metadata, Exception e) {
+                        if (e != null) {
+                            e.printStackTrace();
+                            System.err.println("Failed: " + metadata.offset());
+                        } else {
+                            System.out.println("The offset of the record we just sent is: " + metadata.offset());
+                        }
+                    }
+                });
+    }
+    */
+
+    public void send(String key, Row row) {
+        //producer.send(new ProducerRecord<>("my-topic", key, value));
+        producer.send(new ProducerRecord<String, Row>("my-topic", key, row),
                 new Callback() {
                     public void onCompletion(RecordMetadata metadata, Exception e) {
                         if (e != null) {
