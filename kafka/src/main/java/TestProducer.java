@@ -8,7 +8,7 @@ public class TestProducer {
 
         SampleProducer producer = SampleProducer.getInstance();
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 1; i++) {
             String key = Integer.toString(i);
             String value = Integer.toString(i*10000);
 

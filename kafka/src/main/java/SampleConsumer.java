@@ -31,33 +31,53 @@ public class SampleConsumer {
     public void process() {
         //List<ConsumerRecord<String, String>> buffer = new ArrayList<>();
         try {
+            /*
             TopicPartition tp = new TopicPartition("my-topic", 0);
             System.out.printf("last synced: %d\n", consumer.committed(tp).offset());
+            */
 
             while (true) {
+                System.out.println("HELLO");
                 //ConsumerRecords<String, String> records = consumer.poll(Long.MAX_VALUE);
                 ConsumerRecords<String, Row> records = consumer.poll(Long.MAX_VALUE);
+                /*
                 if (records.partitions().size() != 1) {
                     System.err.println("Error: multiple partitions for some reason");
                 }
+                */
+
+                for (TopicPartition partition : records.partitions()) {
+                    List<ConsumerRecord<String, Row>> partitionRecords = records.records(partition);
+                    for (ConsumerRecord<String, Row> record : partitionRecords) {
+                        System.out.println(record.offset() + ": " + record.value());
+                    }
+                    long lastOffset = partitionRecords.get(partitionRecords.size() - 1).offset();
+                    consumer.commitSync(Collections.singletonMap(partition, new OffsetAndMetadata(lastOffset + 1)));
+                }
+
+
+                /*
                 TopicPartition partition = records.partitions().iterator().next();
+                if (consumer.committed(partition) == null) {
+                    System.out.printf("consumer.committed(partition) is null");
+                } else {
+                    System.out.printf("last synced: %d\n", consumer.committed(partition).offset());
+                }
 
                 //List<ConsumerRecord<String, String>> partitionRecords = records.records(partition);
                 List<ConsumerRecord<String, Row>> partitionRecords = records.records(partition);
 
+                System.out.println("partition record size : " + partitionRecords.size());
                 for (ConsumerRecord<String, Row> record : partitionRecords) {
                     System.out.println(record.offset() + ": " + record.value());
                 }
                 long lastOffset;
-                if (partitionRecords.size() > 1) {
-                    lastOffset = partitionRecords.get(partitionRecords.size() - 2).offset(); // set one previous for test
-                    System.out.println("set one previous offset for test");
-                } else {
-                    lastOffset = partitionRecords.get(partitionRecords.size() - 1).offset();
-                }
+                lastOffset = partitionRecords.get(partitionRecords.size() - 1).offset();
                 consumer.commitSync(Collections.singletonMap(partition, new OffsetAndMetadata(lastOffset + 1)));
                 System.out.printf("synced: %d\n", lastOffset + 1);
+                */
             }
+
         } finally {
             close();
         }
