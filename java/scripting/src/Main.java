@@ -25,7 +25,7 @@ public class Main {
                 ScriptObjectMirror json = (ScriptObjectMirror) engine.eval("JSON");
 
                 String script = "function echo(message) { print(message);" +
-                        "print(json.value);" +
+                        "print(json.value); " +
                         "print(accounts[0].balance); print(accounts[1].balance); var result = getdata(); " +
                         //"return JSON.stringify(result); " +
                         "json.value += 1000;" +
