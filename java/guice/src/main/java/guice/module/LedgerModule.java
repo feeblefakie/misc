@@ -6,8 +6,10 @@ import guice.Config;
 import guice.Database;
 import guice.DefaultDatabase;
 import guice.DefaultExecutor;
+import guice.DefaultHandler;
 import guice.DefaultManager;
 import guice.Executor;
+import guice.Handler;
 import guice.Manager;
 
 public class LedgerModule extends AbstractModule {
@@ -17,6 +19,7 @@ public class LedgerModule extends AbstractModule {
     bind(Executor.class).to(DefaultExecutor.class);
     bind(Database.class).to(DefaultDatabase.class);
     bind(Manager.class).to(DefaultManager.class);
+    bind(Handler.class).to(DefaultHandler.class);
   }
 
   @Provides
