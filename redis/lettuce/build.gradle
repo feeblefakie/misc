@@ -1,0 +1,16 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'jacoco'
+apply plugin: 'java-library-distribution'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'io.lettuce', name: 'lettuce-core', version: '5.1.2.RELEASE'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
