@@ -16,7 +16,6 @@ public class SparkOnCassandra {
         .load()
         .createTempView("asset");
 
-
     Dataset<Row> rows = session.sql("SELECT * FROM asset WHERE age = 1");
     rows.show();
 
