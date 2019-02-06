@@ -32,7 +32,9 @@ public class Column implements NamedBytes, Cloneable, Serializable {
         this.name = name;
         this.bytes = bytes;
         this.type = type;
-        byteArray = bytes.array();
+        if (bytes != null) {
+            byteArray = bytes.array();
+        }
     }
 
     @Override
@@ -47,7 +49,7 @@ public class Column implements NamedBytes, Cloneable, Serializable {
 
     @Override
     public ByteBuffer getBytes() {
-        if (bytes == null) {
+        if (bytes == null && byteArray != null) {
             bytes = ByteBuffer.allocate(byteArray.length).put(byteArray);
         }
         return bytes;

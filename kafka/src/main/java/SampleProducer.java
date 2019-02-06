@@ -1,13 +1,14 @@
 import org.apache.kafka.clients.producer.*;
 
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by hiroyuki on 2017/08/15.
  */
 public class SampleProducer {
     private static SampleProducer instance = null;
-    private Producer<String, Row> producer;
+    private Producer<String, String> producer;
 
     private SampleProducer() {
         Properties props = new Properties();
@@ -16,13 +17,13 @@ public class SampleProducer {
         props.put("retries", Integer.MAX_VALUE);
         props.put("batch.size", 16384);
         //props.put("linger.ms", 1000);
-        props.put("linger.ms", 5);
-        props.put("buffer.memory", 33554432);
+        //props.put("linger.ms", 5);
+        //props.put("buffer.memory", 33554432);
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        //props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        props.put("value.serializer", "RowSerializer");
+        props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        //props.put("value.serializer", "RowSerializer");
 
-        producer = new KafkaProducer<String, Row>(props);
+        producer = new KafkaProducer<String, String>(props);
     }
 
     public static synchronized SampleProducer getInstance() {
@@ -32,23 +33,22 @@ public class SampleProducer {
         return instance;
     }
 
-    /*
-    public void send(String key, String value) {
-        //producer.send(new ProducerRecord<>("my-topic", key, value));
-        producer.send(new ProducerRecord<String, Row>("my-topic", key, value),
+    public void send(String key, String value) throws ExecutionException, InterruptedException {
+        //producer.send(new ProducerRecord<>("my-replicated-topic", key, value)).get();
+        producer.send(new ProducerRecord<>("my-replicated-topic", key, value),
                 new Callback() {
                     public void onCompletion(RecordMetadata metadata, Exception e) {
                         if (e != null) {
                             e.printStackTrace();
                             System.err.println("Failed: " + metadata.offset());
                         } else {
-                            System.out.println("The offset of the record we just sent is: " + metadata.offset());
+                            //System.out.println("The offset of the record we just sent is: " + metadata.offset());
                         }
                     }
                 });
     }
-    */
 
+    /*
     public void send(String key, Row row) {
         //producer.send(new ProducerRecord<>("my-topic", key, value));
         producer.send(new ProducerRecord<String, Row>("my-topic", key, row),
@@ -63,6 +63,7 @@ public class SampleProducer {
                     }
                 });
     }
+    */
 
     public void flush() {
         producer.flush();
