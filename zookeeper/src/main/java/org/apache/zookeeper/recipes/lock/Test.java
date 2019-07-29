@@ -6,7 +6,9 @@ import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -31,27 +33,33 @@ public class Test {
               }
             });
     counter = new AtomicInteger();
-    ExecutorService exec = Executors.newFixedThreadPool(100);
+    ExecutorService exec = Executors.newFixedThreadPool(1000);
 
+    //Striped<Semaphore> striped = Striped.lazyWeakSemaphore(10000, 1);
+    Map<String, Semaphore> map = new ConcurrentHashMap<>();
     double t1 = System.currentTimeMillis();
     int n = 10000;
     for (int i = 0; i < n; ++i) {
-      Striped<Semaphore> striped = Striped.lazyWeakSemaphore(10000, 1);
       String key = Integer.toString(new Random().nextInt(10000));
-      Semaphore semaphore = striped.get(key);
-      semaphore.acquire();
-      //ReadWriteLock lock = new ReentrantReadWriteLock();
-      //lock.writeLock().lock();
-      //WriteLock lock = lock();
+      // Semaphore semaphore = striped.get(key);
+      // semaphore.acquire();
+      // ReadWriteLock lock = new ReentrantReadWriteLock();
+      // lock.writeLock().lock();
+      // WriteLock lock = lock();
+      if (!map.containsKey(key)) {
+        map.put(key, new Semaphore(1));
+      }
+      map.get(key).acquire();
       exec.submit(
           () -> {
             try {
               // some processing
               Thread.sleep(100);
-              semaphore.release();
+              //semaphore.release();
               //lock.writeLock().unlock();
               //lock.unlock();
               //lock.close();
+              map.get(key).release();
             } catch (Exception e) {
               e.printStackTrace();
             }
