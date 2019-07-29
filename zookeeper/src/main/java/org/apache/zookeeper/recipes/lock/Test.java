@@ -1,5 +1,6 @@
 package org.apache.zookeeper.recipes.lock;
 
+import com.google.common.util.concurrent.Striped;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
@@ -9,8 +10,11 @@ import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class Test {
   private static ZooKeeper zk;
@@ -32,14 +36,22 @@ public class Test {
     double t1 = System.currentTimeMillis();
     int n = 10000;
     for (int i = 0; i < n; ++i) {
-      WriteLock lock = lock();
+      Striped<Semaphore> striped = Striped.lazyWeakSemaphore(10000, 1);
+      String key = Integer.toString(new Random().nextInt(10000));
+      Semaphore semaphore = striped.get(key);
+      semaphore.acquire();
+      //ReadWriteLock lock = new ReentrantReadWriteLock();
+      //lock.writeLock().lock();
+      //WriteLock lock = lock();
       exec.submit(
           () -> {
             try {
               // some processing
               Thread.sleep(100);
-              lock.unlock();
-              lock.close();
+              semaphore.release();
+              //lock.writeLock().unlock();
+              //lock.unlock();
+              //lock.close();
             } catch (Exception e) {
               e.printStackTrace();
             }
