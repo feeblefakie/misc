@@ -1,0 +1,27 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.apache.pulsar', name: 'pulsar-client', version: '2.5.0'
+}
+
+mainClassName = 'benchmark.fake'
+
+run {
+    if (project.hasProperty('main')) {    
+        main(project.main)
+    }
+
+    if (project.hasProperty('args')) {
+        args project.args.split('\\s+')
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
