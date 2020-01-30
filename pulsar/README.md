@@ -33,3 +33,7 @@ $ bin/pulsar-admin namespaces create my-tenant/my-namespace
 $ bin/pulsar-admin topics create-partitioned-topic persistent://my-tenant/my-namespace/my-topic --partitions 32
 ```
 
+* Run a simple benchmark
+```
+$ build/install/pulsar/bin/producer-benchmark-executor --topic=my-topic --runtime=30000 --service-url="pulsar://localhost:6650" --threads=128 --record-size=1024
+```
