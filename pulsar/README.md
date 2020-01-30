@@ -35,5 +35,6 @@ $ bin/pulsar-admin topics create-partitioned-topic persistent://my-tenant/my-nam
 
 * Run a simple benchmark
 ```
+$ ./gradlew installDist
 $ build/install/pulsar/bin/producer-benchmark-executor --topic=my-topic --runtime=30000 --service-url="pulsar://localhost:6650" --threads=128 --record-size=1024
 ```
