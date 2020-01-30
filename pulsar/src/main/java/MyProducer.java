@@ -7,11 +7,10 @@ public class MyProducer {
   public static void main(String[] args) throws PulsarClientException {
     PulsarClient client = PulsarClient.builder().serviceUrl("pulsar://localhost:6650").build();
 
-    Producer<byte[]> producer = client.newProducer().topic("my-first-ptopic").create();
-
+    Producer<byte[]> producer = client.newProducer().topic("my-topic").create();
     producer.newMessage().key("hello").value("world".getBytes()).send();
     producer.newMessage().key("oh").value("my".getBytes()).send();
-    System.out.println("HELL");
+
     client.close();
   }
 }

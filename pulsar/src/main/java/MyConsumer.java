@@ -12,7 +12,7 @@ public class MyConsumer {
     Consumer consumer =
         client
             .newConsumer()
-            .topic("my-first-ptopic")
+            .topic("my-topic")
             .subscriptionName("sub1")
             //.subscriptionType(SubscriptionType.Failover)
             .subscribe();

@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'application'
+startScripts.enabled = false
 
 repositories {
     mavenCentral()
@@ -9,18 +10,19 @@ repositories {
 
 dependencies {
     compile group: 'org.apache.pulsar', name: 'pulsar-client', version: '2.5.0'
+    compile group: 'info.picocli', name: 'picocli', version: '4.1.4'
 }
 
-mainClassName = 'benchmark.fake'
+task ProducerBenchmarkExecutor(type: CreateStartScripts) {
+    mainClassName = 'ProducerBenchmarkExecutor'
+    applicationName = 'producer-benchmark-executor'
+    outputDir = new File(project.buildDir, 'tmp')
+    classpath = jar.outputs.files + project.configurations.runtime
+}
 
-run {
-    if (project.hasProperty('main')) {    
-        main(project.main)
-    }
-
-    if (project.hasProperty('args')) {
-        args project.args.split('\\s+')
-    }
+applicationDistribution.into('bin') {
+    from(ProducerBenchmarkExecutor)
+    fileMode = 0755
 }
 
 sourceCompatibility = 1.8
