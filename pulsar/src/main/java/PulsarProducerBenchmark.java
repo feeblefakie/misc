@@ -70,15 +70,24 @@ public class PulsarProducerBenchmark {
               String key = UUID.randomUUID().toString();
 
               try {
-                //producer.send(record, new BenchmarkCallback());
                 long before = System.currentTimeMillis();
-                producer.newMessage().key(key).value(payload).send();
+                //producer.newMessage().key(key).value(payload).send();
+                producer.newMessage().key(key).value(payload).sendAsync().thenAccept(msgId -> {
+                  long after = System.currentTimeMillis();
+
+                  windowCount.increment();
+                  windowLatency.add(after - before);
+                  totalCount.increment();
+                  totalLatency.add(after - before);
+                });
+                /*
                 long after = System.currentTimeMillis();
 
                 windowCount.increment();
                 windowLatency.add(after - before);
                 totalCount.increment();
                 totalLatency.add(after - before);
+                 */
               } catch (Exception e) {
                 e.printStackTrace();
               }
