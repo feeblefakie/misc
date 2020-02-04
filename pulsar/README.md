@@ -39,6 +39,7 @@ $ ./gradlew installDist
 $ build/install/pulsar/bin/producer-benchmark-executor --topic=my-topic --runtime=30000 --service-url="pulsar://localhost:6650" --threads=128 --record-size=1024
 ```
 
+* Run `pulsar-perf produce`
 ```
 $ bin/pulsar-perf produce -threads 2 -u pulsar://localhost:6650 -o 2000 -p 100000  -n 1 -s 1000 -r 300000 -b 1 -z SNAPPY my-topic 
 
@@ -75,3 +76,10 @@ $ bin/pulsar-perf produce -threads 8 -u pulsar://localhost:6650 -o 2000 -p 10000
 07:25:30.646 [main] INFO  org.apache.pulsar.testclient.PerformanceProducer - Throughput produced: 409611.3  msg/s ---   3125.1 Mbit/s --- failure      0.0 msg/s --- Latency: mean:  32.354 ms - med:  21.029 - 95pct:  33.684 - 99pct:  48.711 - 99.9pct: 2652.319 - 99.99pct: 2659.663 - Max: 2660.383
 07:25:40.671 [main] INFO  org.apache.pulsar.testclient.PerformanceProducer - Throughput produced: 508319.0  msg/s ---   3878.2 Mbit/s --- failure      0.0 msg/s --- Latency: mean:  19.745 ms - med:  19.050 - 95pct:  28.083 - 99pct:  32.214 - 99.9pct:  37.712 - 99.99pct:  43.122 - Max:  54.484
 ```
+
+
+* Run `pulsar-perf consume`
+```
+$  bin/pulsar-perf consume -u pulsar://localhost:6650 -q 10000  my-topic 
+```
+NOTE: 
