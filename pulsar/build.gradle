@@ -20,8 +20,24 @@ task ProducerBenchmarkExecutor(type: CreateStartScripts) {
     classpath = jar.outputs.files + project.configurations.runtime
 }
 
+task MyConsumer(type: CreateStartScripts) {
+    mainClassName = 'MyConsumer'
+    applicationName = 'my-consumer'
+    outputDir = new File(project.buildDir, 'tmp')
+    classpath = jar.outputs.files + project.configurations.runtime
+}
+
+task MyProducer(type: CreateStartScripts) {
+    mainClassName = 'MyProducer'
+    applicationName = 'my-producer'
+    outputDir = new File(project.buildDir, 'tmp')
+    classpath = jar.outputs.files + project.configurations.runtime
+}
+
 applicationDistribution.into('bin') {
     from(ProducerBenchmarkExecutor)
+    from(MyConsumer)
+    from(MyProducer)
     fileMode = 0755
 }
 

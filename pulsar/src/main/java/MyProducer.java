@@ -1,3 +1,4 @@
+import org.apache.pulsar.client.api.BatcherBuilder;
 import org.apache.pulsar.client.api.MessageRoutingMode;
 import org.apache.pulsar.client.api.Producer;
 import org.apache.pulsar.client.api.PulsarClient;
@@ -7,10 +8,25 @@ public class MyProducer {
   public static void main(String[] args) throws PulsarClientException {
     PulsarClient client = PulsarClient.builder().serviceUrl("pulsar://localhost:6650").build();
 
-    Producer<byte[]> producer = client.newProducer().topic("my-topic").create();
-    producer.newMessage().key("hello").value("world".getBytes()).send();
-    producer.newMessage().key("oh").value("my".getBytes()).send();
+    Producer<byte[]> producer =
+        client
+            .newProducer()
+            .topic("persistent://my-tenant/my-namespace/my-topic8")
+            .messageRoutingMode(MessageRoutingMode.SinglePartition)
+            .batcherBuilder(BatcherBuilder.KEY_BASED)
+            .create();
 
-    client.close();
+    while (true) {
+      for (int i = 0; i < 1000; ++i) {
+        String value = Integer.toString(i);
+        producer.newMessage().key(value).value(value.getBytes()).send();
+      }
+      try {
+        Thread.sleep(10);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+    }
+    // client.close();
   }
 }

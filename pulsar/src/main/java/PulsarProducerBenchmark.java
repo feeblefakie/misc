@@ -1,9 +1,9 @@
-import java.util.Properties;
 import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.LongAdder;
+import org.apache.pulsar.client.api.CompressionType;
 import org.apache.pulsar.client.api.Producer;
 import org.apache.pulsar.client.api.PulsarClient;
 import org.apache.pulsar.client.api.PulsarClientException;
@@ -29,7 +29,8 @@ public class PulsarProducerBenchmark {
       int numRecords,
       int numThreads,
       int reportingInterval,
-      int runtime) throws PulsarClientException {
+      int runtime)
+      throws PulsarClientException {
     this.topic = topic;
     this.recordSize = recordSize;
     this.numRecords = numRecords;
@@ -44,7 +45,9 @@ public class PulsarProducerBenchmark {
   }
 
   public void sendRecords() throws PulsarClientException {
-    Producer<byte[]> producer = client.newProducer().topic(topic).create();
+    Producer<byte[]> producer =
+        client.newProducer().compressionType(CompressionType.SNAPPY).topic(topic).create();
+    // Producer<byte[]> producer = client.newProducer().topic(topic).create();
 
     start = System.currentTimeMillis();
     Random random = new Random();
@@ -71,15 +74,21 @@ public class PulsarProducerBenchmark {
 
               try {
                 long before = System.currentTimeMillis();
-                //producer.newMessage().key(key).value(payload).send();
-                producer.newMessage().key(key).value(payload).sendAsync().thenAccept(msgId -> {
-                  long after = System.currentTimeMillis();
+                // producer.newMessage().key(key).value(payload).send();
+                producer
+                    .newMessage()
+                    .key(key)
+                    .value(payload)
+                    .sendAsync()
+                    .thenAccept(
+                        msgId -> {
+                          long after = System.currentTimeMillis();
 
-                  windowCount.increment();
-                  windowLatency.add(after - before);
-                  totalCount.increment();
-                  totalLatency.add(after - before);
-                });
+                          windowCount.increment();
+                          windowLatency.add(after - before);
+                          totalCount.increment();
+                          totalLatency.add(after - before);
+                        });
                 /*
                 long after = System.currentTimeMillis();
 

@@ -60,13 +60,7 @@ public class ProducerBenchmarkExecutor implements Callable<Void> {
   public Void call() throws PulsarClientException {
     PulsarProducerBenchmark benchmark =
         new PulsarProducerBenchmark(
-            serviceUrl,
-            topic,
-            recordSize,
-            numRecords,
-            numThreads,
-            reportingInterval,
-            runtime);
+            serviceUrl, topic, recordSize, numRecords, numThreads, reportingInterval, runtime);
     benchmark.sendRecords();
 
     return null;
