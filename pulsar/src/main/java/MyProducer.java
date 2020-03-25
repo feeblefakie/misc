@@ -16,17 +16,14 @@ public class MyProducer {
             .batcherBuilder(BatcherBuilder.KEY_BASED)
             .create();
 
-    while (true) {
+    for (int j = 0; j < 10; ++j) {
       for (int i = 0; i < 1000; ++i) {
         String value = Integer.toString(i);
         producer.newMessage().key(value).value(value.getBytes()).send();
       }
-      try {
-        Thread.sleep(10);
-      } catch (InterruptedException e) {
-        e.printStackTrace();
-      }
     }
-    // client.close();
+
+    producer.close();
+    client.close();
   }
 }

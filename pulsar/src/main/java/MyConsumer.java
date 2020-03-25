@@ -13,6 +13,7 @@ public class MyConsumer {
     if (args.length >= 1) {
       subscriptionName = args[0];
     }
+    System.err.println(subscriptionName);
 
     PulsarClient client =
         PulsarClient.builder()
