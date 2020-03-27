@@ -18,8 +18,9 @@ public class MyProducer {
 
     for (int j = 0; j < 10; ++j) {
       for (int i = 0; i < 1000; ++i) {
-        String value = Integer.toString(i);
-        producer.newMessage().key(value).value(value.getBytes()).send();
+        String key = Integer.toString(i);
+        String value = new Long(System.currentTimeMillis()).toString();
+        producer.newMessage().key(key).value(value.getBytes()).send();
       }
     }
 

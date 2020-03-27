@@ -23,7 +23,8 @@ public class MyConsumer {
 
     MessageListener<byte[]> listener =
         (consumer, msg) -> {
-          printSync(consumer.getConsumerName() + " " + msg.getKey());
+          synchronizedPrint(
+              consumer.getConsumerName() + " " + msg.getKey() + " " + new String(msg.getValue()));
           consumer.acknowledgeAsync(msg);
         };
 
@@ -50,7 +51,7 @@ public class MyConsumer {
     }
   }
 
-  private static synchronized void printSync(String str) {
+  private static synchronized void synchronizedPrint(String str) {
     System.out.println(str);
   }
 }
