@@ -10,6 +10,7 @@ repositories {
 
 dependencies {
     compile group: 'org.apache.pulsar', name: 'pulsar-client', version: '2.5.0'
+    compile group: 'org.apache.pulsar', name: 'pulsar-client-admin', version: '2.5.0'
     compile group: 'info.picocli', name: 'picocli', version: '4.1.4'
 }
 
@@ -27,6 +28,13 @@ task MyConsumer(type: CreateStartScripts) {
     classpath = jar.outputs.files + project.configurations.runtime
 }
 
+task MyFailoverConsumer(type: CreateStartScripts) {
+    mainClassName = 'MyFailoverConsumer'
+    applicationName = 'my-fo-consumer'
+    outputDir = new File(project.buildDir, 'tmp')
+    classpath = jar.outputs.files + project.configurations.runtime
+}
+
 task MyProducer(type: CreateStartScripts) {
     mainClassName = 'MyProducer'
     applicationName = 'my-producer'
@@ -37,6 +45,7 @@ task MyProducer(type: CreateStartScripts) {
 applicationDistribution.into('bin') {
     from(ProducerBenchmarkExecutor)
     from(MyConsumer)
+    from(MyFailoverConsumer)
     from(MyProducer)
     fileMode = 0755
 }

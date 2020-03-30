@@ -7,13 +7,14 @@ import org.apache.pulsar.client.api.SubscriptionType;
 
 public class MyConsumer {
   private static final int NUM_CONSUMERS = 20;
-  private static String subscriptionName = "subscription-1";
 
   public static void main(String[] args) throws PulsarClientException {
-    if (args.length >= 1) {
-      subscriptionName = args[0];
+    if (args.length != 2) {
+      System.err.println("MyConsumer topic subscription ");
     }
-    System.err.println(subscriptionName);
+    String topic = args[0];
+    String subscriptionName = args[1];
+    System.err.println(topic + " " + subscriptionName);
 
     PulsarClient client =
         PulsarClient.builder()
@@ -31,7 +32,7 @@ public class MyConsumer {
     ConsumerBuilder<byte[]> builder =
         client
             .newConsumer()
-            .topic("persistent://my-tenant/my-namespace/my-topic8")
+            .topic(topic)
             .subscriptionName(subscriptionName)
             .subscriptionType(SubscriptionType.Key_Shared)
             .messageListener(listener)
