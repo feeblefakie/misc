@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'application'
+startScripts.enabled = false
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'com.azure', name: 'azure-storage-blob', version: '12.4.0'
+    compile group: 'com.azure', name: 'azure-identity', version: '1.0.6'
+}
+
+application {
+    mainClass = 'Test'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
