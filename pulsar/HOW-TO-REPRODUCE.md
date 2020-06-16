@@ -3,8 +3,8 @@
 ## Steps to reproduce
 
 0. Start pulsar 2.6.0-candidate-1
-  - Use standalone for quick testing
-  - Use the default setting
+   - Use standalone for quick testing
+   - Try `AUTO_SPLIT` mode and consistent hashing
 1. create a partitioned topic named
 ```
 $ bin/pulsar-admin tenants create my-tenant
@@ -22,15 +22,19 @@ $ ./gradlew installDist
 $ build/install/pulsar/bin/my-producer persistent://my-tenant/my-namespace/my-topic
 ```
 This produces 10000 messages in total like this; <"0", "timestamp">, <"1", "timestamp"> ... <"999", "timestamp">, <"0", "timestamp">, <"1", "timestamp">.
+
 The code is located at https://github.com/feeblefakie/misc/blob/master/pulsar/src/main/java/MyProducer.java
 .
+
 4. Start consumers with "subscription1"
 ```
  $ build/install/pulsar/bin/my-consumer  persistent://my-tenant/my-namespace/my-topic subscription1 > /tmp/sub1
  ```
 This starts 20 consumers one by one so the number of consumers are changing during consuming.
+
 The code is located at https://github.com/feeblefakie/misc/blob/master/pulsar/src/main/java/MyConsumer.ava.
 .
+
 5. Start consumers with "subscription2"
 ```
  $ build/install/pulsar/bin/my-consumer  persistent://my-tenant/my-namespace/my-topic subscription2 > /tmp/sub2
