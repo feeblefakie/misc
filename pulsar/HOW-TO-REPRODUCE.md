@@ -1,8 +1,8 @@
-## How to reproduce an inconsistent order issue with KeyShared in pulsar-2.6.0-candidate-1
+## How to reproduce an inconsistent order issue with KeyShared in pulsar-2.6.0
 
 ## Steps to reproduce
 
-0. Start pulsar 2.6.0-candidate-1
+0. Start pulsar 2.6.0
    - Use standalone for quick testing
    - Try `AUTO_SPLIT` mode and consistent hashing
 1. create a partitioned topic named
