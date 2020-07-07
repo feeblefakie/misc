@@ -49,4 +49,5 @@ This will check all the keys (from 0 to 999) to see if the consumers consume the
 ## Results
 
 - An inconsistent order is produced with the default `AUTO_SPLIT` mode.
-- An inconsistent order is **NOT** produced with consistent hashing mode (enabled by setting `subscriptionKeySharedUseConsistentHashing` to `true`)
+- ~~An inconsistent order is **NOT** produced with consistent hashing mode (enabled by setting `subscriptionKeySharedUseConsistentHashing` to `true`)~~
+   - Consistent Hashing actually also produces inconsistently ordered messages.
