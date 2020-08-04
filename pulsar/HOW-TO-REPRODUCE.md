@@ -17,7 +17,15 @@ $ git clone https://github.com/feeblefakie/misc.git
 $ cd /misc/pulsar
 $ ./gradlew installDist
 ```
-3. Start a producer
+3. Start consumers to register subscriptions
+```
+ $ build/install/pulsar/bin/my-consumer  persistent://my-tenant/my-namespace/my-topic subscription1
+ $ build/install/pulsar/bin/my-consumer  persistent://my-tenant/my-namespace/my-topic subscription2
+```
+ 
+You can exit after a while since it is just for registering the subscriptions and there is no message to consume.
+
+4. Start a producer
 ```
 $ build/install/pulsar/bin/my-producer persistent://my-tenant/my-namespace/my-topic
 ```
@@ -26,7 +34,7 @@ This produces 10000 messages in total like this; <"0", "timestamp">, <"1", "time
 The code is located at https://github.com/feeblefakie/misc/blob/master/pulsar/src/main/java/MyProducer.java
 .
 
-4. Start consumers with "subscription1"
+5. Start consumers with "subscription1"
 ```
  $ build/install/pulsar/bin/my-consumer  persistent://my-tenant/my-namespace/my-topic subscription1 > /tmp/sub1
  ```
@@ -35,12 +43,12 @@ This starts 20 consumers one by one so the number of consumers are changing duri
 The code is located at https://github.com/feeblefakie/misc/blob/master/pulsar/src/main/java/MyConsumer.ava.
 .
 
-5. Start consumers with "subscription2"
+6. Start consumers with "subscription2"
 ```
  $ build/install/pulsar/bin/my-consumer  persistent://my-tenant/my-namespace/my-topic subscription2 > /tmp/sub2
 ```
-6. Wait they consume all the messages
-7. Compare results to see inconsistencies between consumers for the same key with different subscriptions
+7. Wait they consume all the messages
+8. Compare results to see inconsistencies between consumers for the same key with different subscriptions
 ```
 ./check.sh
 ```
