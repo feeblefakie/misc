@@ -13,6 +13,9 @@ jobs:
       - name: tag number
         run: echo ${{ github.event.release.tag_name }}
 
+      - name: event ref
+        run: echo ${{ github.event.ref }}
+
       - name: Set version
         id: version
         run: |
