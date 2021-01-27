@@ -10,14 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: tag number
+        run: echo ${{ github.event.release.tag_name }}
+
       - name: Set version
         id: version
         run: |
           VERSION=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
           echo ::set-output name=version::${VERSION}
-
-      - name: tag number
-        run: echo ${{ github.event.release.tag_name }}
 
       - name: print
         run: echo ${{ steps.version.outputs.version }}
