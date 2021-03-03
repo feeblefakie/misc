@@ -1,0 +1,54 @@
+run
+(str "hello" " " "world")
+(string? "hello")
+(defn greeting
+"Returns a greeting of the form 'Hello, username.'"
+[username]
+(str "Hello, " username))
+(greeting "world")
+(greetin)
+(greeting)
+(doc greeting)
+(defn greeting
+([] (greeting "world"))
+([username] (str "Hello, " username))
+)
+(greeting)
+(greeting Michael)
+(greeting" Michael")
+(greeting "Michael")
+(defn date [p1 p2 & others]
+(println p1 "and" p2 "went out with" (count others) "others") 
+)
+(date "hiro" "yuki")
+(date "hiro" "yuki", "tom")
+(defn indexable-word? [word]
+(> (count word) 2))
+(require '[clojure.string :as str])
+(filter indexable-word? (str/split "i'm hiroyuki yaamda. 41 years old."))
+(filter indexable-word? (str/split "im hiroyuki yaamda. 41 years old."))
+(filter indexable-word? (str/split "im hiroyuki yaamda. 41 years old." #"\W+"))
+(filter (fn [w] (> (count w) 2)) (str/split "im hiroyuki yaamda. 41 years old." #"\W+"))
+(filter #(> (count %) 2)) (str/split "im hiroyuki yaamda. 41 years old." #"\W+"))
+(filter #(> (count %) 2) (str/split "im hiroyuki yaamda. 41 years old." #"\W+"))
+(filter #(> (count %1) 2) (str/split "im hiroyuki yaamda. 41 years old." #"\W+"))
+(filter #(> (count %2) 2) (str/split "im hiroyuki yaamda. 41 years old." #"\W+"))
+(filter #(> (count %) 2) (str/split "im hiroyuki yaamda. 41 years old." #"\W+"))
+(defn indexable-words [text]
+(let [indexable-word? (fn [word] (> (count word) 2))]
+(filter indexable-word? (str/split "hello world i am boy" #"\W+")))
+)
+(indexable-words)
+(indexable-words "oh")
+(defn make-greeter [prefix] (fn [username] (str prefix "," username))
+)
+(defn aloha-greeter (make-greater "Aloha"))
+(def aloha-greeter (make-greater "Aloha"))
+(defn aloha-greeter (make-greeter "Aloha"))
+(def aloha-greeter (make-greeter "Aloha"))
+(aloha-greeter "Hiro")
+(def multi (fn [a b c] (* a b c)))
+(multi 1 3 9)
+(defn multi2 [a b c] (* a b c))
+(multi2 1 3 9)
+exit
