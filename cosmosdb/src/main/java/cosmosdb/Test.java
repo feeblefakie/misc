@@ -4,6 +4,7 @@ import com.azure.cosmos.ConsistencyLevel;
 import com.azure.cosmos.CosmosClient;
 import com.azure.cosmos.CosmosClientBuilder;
 import com.azure.cosmos.CosmosContainer;
+import com.azure.cosmos.CosmosException;
 import com.azure.cosmos.models.CosmosItemRequestOptions;
 import com.azure.cosmos.models.CosmosItemResponse;
 import com.azure.cosmos.models.CosmosStoredProcedureRequestOptions;
@@ -28,7 +29,7 @@ public class Test {
             .buildClient();
 
     CosmosContainer container = client.getDatabase("banking").getContainer("account");
-    // create(container);
+    create(container);
     read(container);
     upsert(container);
     read(container);
@@ -46,8 +47,14 @@ public class Test {
     account.setBalance(1000);
     account.setCreatedAt(System.currentTimeMillis());
     account.setUpdatedAt(System.currentTimeMillis());
-    container.createItem(
+    CosmosItemResponse resp = null;
+    try {
+      resp = container.createItem(
         account, new PartitionKey(account.getId()), new CosmosItemRequestOptions());
+    } catch (CosmosException e) {
+      e.printStackTrace();
+      System.out.println(e.getStatusCode());
+    }
   }
 
   private static void read(CosmosContainer container) {

@@ -20,6 +20,7 @@ public class JsonTest {
   public static void main(String[] args) throws JsonProcessingException {
 
     int count = 10000;
+    //int count = 1;
     ObjectMapper mapper = new ObjectMapper();
     ObjectNode node = mapper.createObjectNode();
     node.put(KEY, VALUE);
@@ -32,6 +33,8 @@ public class JsonTest {
     String json = null;
     for (int i = 0; i < count; ++i) {
       json = mapper.writeValueAsString(node);
+      //json = node.toString();
+      //System.out.println(json);
     }
     long end = System.nanoTime();
     System.out.println((double) (end - start) / count + " ns/op for serialize (Jackson)");
